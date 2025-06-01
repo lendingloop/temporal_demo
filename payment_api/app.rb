@@ -103,31 +103,73 @@ class PaymentAPI < Sinatra::Base
     logger.debug("GET /api/payments/#{workflow_id} - Retrieving payment status")
     
     begin
-      # Create a workflow handle with keyword arguments
-      logger.debug("Creating workflow handle for #{workflow_id}")
-      handle = temporal_client.workflow_handle(
-        workflow_type: 'MultiCurrencyPaymentWorkflow',
-        workflow_id: workflow_id
-      )
+      # Create a workflow handle with just the workflow ID (based on samples-ruby)
+      logger.debug("Creating workflow handle for workflow_id: #{workflow_id}")
+      handle = temporal_client.workflow_handle(workflow_id)
       logger.debug("Successfully created workflow handle")
       
-      # Try to get the result directly - simplest approach
-      begin
-        logger.debug("Attempting to retrieve workflow result")
-        result = handle.result
-        logger.debug("Workflow completed with result: #{result.inspect}")
-        status = "COMPLETED"
-        message = "Payment has been completed successfully"
-      rescue => e
-        # Handle all errors with detailed logging
-        logger.error("Error retrieving workflow result: #{e.class}: #{e.message}")
-        logger.error(e.backtrace.join("\n"))
-        
-        # Default to processing status when we can't determine exact state
-        status = "PROCESSING"
+      # Get workflow status using describe
+      logger.debug("Getting workflow description")
+      description = handle.describe
+      logger.debug("Workflow status: #{description.status}")
+      
+      # Map Temporal status to our application status
+      # Status codes from Temporal Ruby SDK:
+      # 1 = RUNNING
+      # 2 = COMPLETED
+      # 3 = FAILED
+      # 4 = CANCELED
+      # 5 = TERMINATED
+      # 6 = CONTINUED_AS_NEW
+      # 7 = TIMED_OUT
+      status = case description.status
+               when 2
+                 "COMPLETED"
+               when 1
+                 "RUNNING"
+               when 3
+                 "FAILED"
+               when 4
+                 "CANCELED"
+               when 5
+                 "TERMINATED"
+               when 7
+                 "TIMED_OUT"
+               when 6
+                 "CONTINUED_AS_NEW"
+               else
+                 "UNKNOWN_#{description.status}"
+               end
+      
+      # If completed, try to get the result
+      if status == "COMPLETED"
+        begin
+          logger.debug("Getting workflow result")
+          result = handle.result(timeout: 2) # Short timeout for completed workflows
+          logger.debug("Workflow result: #{result.inspect}")
+        rescue => e
+          logger.warn("Could not get workflow result: #{e.message}")
+          result = { status: "completed" }
+        end
+      else
         result = nil
-        message = "Payment is being processed or status cannot be determined"
       end
+      
+      # Set appropriate message based on status
+      message = case status
+                when "COMPLETED"
+                  "Payment has been completed successfully"
+                when "RUNNING"
+                  "Payment is being processed"
+                when "FAILED"
+                  "Payment processing failed"
+                when "TERMINATED", "CANCELED"
+                  "Payment was canceled"
+                when "TIMED_OUT"
+                  "Payment timed out"
+                else
+                  "Payment status: #{status}"
+                end
       
       # Return the result
       content_type :json
