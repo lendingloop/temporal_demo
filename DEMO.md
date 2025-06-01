@@ -28,60 +28,68 @@ curl -sSf https://temporal.download/cli.sh | sh
 temporal server start-dev
 ```
 
-The Temporal Web UI will be available at: http://localhost:8233
+## Demo Script (Matching slides)
 
-### 3. Set Up Services
+### 1. Happy Path: $3,000 CAD → USD payment
 
-Open separate terminal windows for each service:
+Run the test payment script:
 
-#### Terminal 1: FX Service
-```bash
-cd fx_service
-bundle install
-bundle exec ruby app.rb -p 3001
+```sh
+# Make sure all services are running with ./start_all.sh first
+ruby test_payment.rb
 ```
 
-#### Terminal 2: Compliance API
-```bash
+This creates a payment with these details:
+- Amount: $3,000.00 CAD
+- Settlement: USD
+- Reference: DEMO123
+- Customer: Loop Card Customer
+- Merchant: USA Vendor Inc
+
+Observe in Temporal UI (http://localhost:8233):
+- FX rate locking
+- Fraud and AML checks
+- Payment pre-authorization
+- Payment processing
+- Successful completion
+
+### 2. Failure Scenario: Service dies mid-workflow
+
+While a payment is processing, kill the compliance service:
+
+```sh
+# In terminal 1: Start a payment
+ruby test_payment.rb
+
+# In terminal 2: Kill the compliance service IMMEDIATELY after starting the payment
+killall -9 puma  # This kills the Compliance API
+```
+
+Observe in Temporal UI:
+- Workflow fails during compliance checks
+- Automatic compensation begins
+- FX rate lock is released
+- Any pre-authorizations are canceled
+
+### 3. Recovery: Service comes back, new payments work
+
+```sh
+# Restart the compliance service
 cd compliance_api
-bundle install
-bundle exec puma -p 3002
+./start.sh
+
+# Wait a moment, then try another payment
+ruby test_payment.rb
 ```
 
-#### Terminal 3: Payment API
-```bash
-cd payment_api
-bundle install
-bundle exec rails db:create db:migrate
-bundle exec rails s -p 3000
-```
+Observe that payments now complete successfully again.
 
-#### Terminal 4: Temporal Worker
-```bash
-cd temporal_worker
-bundle install
-bundle exec ruby worker.rb
-```
+## API Details
 
-## Demo Scenarios
+### Payment API (http://localhost:3000)
 
-### 1. Verify Services
-
-```bash
-# Check FX Service
-curl http://localhost:3001/health | jq
-
-# Check Compliance API
-curl http://localhost:3002/health | jq
-
-# Check Payment API
-curl http://localhost:3000/health | jq
-```
-
-### 2. Happy Path
-
-```bash
-# Start a new payment
+**Create Payment:**
+```sh
 curl -X POST http://localhost:3000/api/payments \
   -H "Content-Type: application/json" \
   -d '{
@@ -89,48 +97,20 @@ curl -X POST http://localhost:3000/api/payments \
     "charge_currency": "CAD",
     "settlement_currency": "USD",
     "customer": {
-      "business_name": "Happy Path Corp",
-      "email": "happy@example.com"
+      "business_name": "Loop Card Customer",
+      "email": "customer@example.com"
     },
     "merchant": {
-      "name": "Test Merchant",
+      "name": "USA Vendor Inc",
       "country": "US"
-    }
-  }' | jq
-
-# Check status (replace with actual workflow_id)
-WORKFLOW_ID="payment-123"
-curl http://localhost:3000/api/payments/$WORKFLOW_ID | jq
-```
-
-### 3. Compliance Failure
-
-```bash
-# Start a payment that will fail compliance
-curl -X POST http://localhost:3000/api/payments \
-  -H "Content-Type: application/json" \
-  -d '{
-    "amount": 15000.00,
-    "charge_currency": "CAD",
-    "settlement_currency": "USD",
-    "customer": {
-      "business_name": "High Risk Corp",
-      "email": "highrisk@example.com"
     },
-    "merchant": {
-      "name": "Suspicious Merchant",
-      "country": "US"
-    }
-  }' | jq
-
-# Check status to see failure and compensation
-WORKFLOW_ID="payment-124"  # Replace with actual ID
-curl http://localhost:3000/api/payments/$WORKFLOW_ID | jq
+    "reference": "DEMO123"
+  }'
 ```
 
-### 4. Service Failure & Recovery
-
-```bash
+**Check Payment Status:**
+```sh
+curl http://localhost:3000/api/payments/payment-DEMO123
 # Start a payment
 WORKFLOW_ID=$(curl -s -X POST http://localhost:3000/api/payments \
   -H "Content-Type: application/json" \

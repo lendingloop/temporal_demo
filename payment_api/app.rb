@@ -39,10 +39,26 @@ class PaymentAPI < Sinatra::Base
   # Create payment endpoint
   post '/api/payments' do
     begin
+      # Parse request payload
       payload = JSON.parse(request.body.read, symbolize_names: true)
       
-      # Generate a unique workflow ID
-      workflow_id = "payment-#{SecureRandom.uuid}"
+      # Log the incoming payload
+      logger.debug("Payment request received: #{payload.inspect}")
+      
+      # Validate required fields
+      required_fields = [:amount, :charge_currency, :settlement_currency, :customer, :merchant]
+      missing_fields = required_fields.select { |field| payload[field].nil? }
+      
+      if !missing_fields.empty?
+        status 400
+        return { error: "Missing required fields: #{missing_fields.join(', ')}" }.to_json
+      end
+      
+      # Generate a unique workflow ID for demo
+      reference = payload[:reference] || "PAY#{rand(10000..99999)}"
+      workflow_id = "payment-#{reference}"
+      
+      logger.debug("Starting payment workflow with ID: #{workflow_id}")
       
       # Start the workflow using the Temporal client
       temporal_client.start_workflow(
@@ -50,7 +66,6 @@ class PaymentAPI < Sinatra::Base
         [payload],
         id: workflow_id,
         task_queue: 'payment-task-queue'
-        # Using default ID reuse policy
       )
       
       # Return the workflow ID for status tracking
@@ -59,7 +74,8 @@ class PaymentAPI < Sinatra::Base
       { 
         success: true, 
         message: "Payment processing started", 
-        workflow_id: workflow_id 
+        workflow_id: workflow_id,
+        reference: reference
       }.to_json
     rescue Temporalio::Error => e
       if e.message.include?('not found') || e.message.include?('NotFound')

@@ -57,20 +57,21 @@ end
 
 logger.info("All services are running.")
 
-# Create a test payment
+# Create a test payment - matches slide 9 demo for $3,000 CAD to USD
 logger.info("Creating a test payment...")
 payment_data = {
-  amount: 1000.00,
+  amount: 3000.00,
   charge_currency: "CAD",
   settlement_currency: "USD",
   customer: {
-    business_name: "Test Business",
-    email: "test@example.com"
+    business_name: "Loop Card Customer",
+    email: "customer@example.com"
   },
   merchant: {
-    name: "Test Merchant",
+    name: "USA Vendor Inc.",
     country: "US"
-  }
+  },
+  reference: "DEMO123" # Fixed reference for demo
 }
 
 result = post_request("http://localhost:3000/api/payments", payment_data)
