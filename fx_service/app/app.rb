@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'json'
+require 'securerandom'
 
 # FX Service - Exchange Rate Provider
 class FXService < Sinatra::Base
