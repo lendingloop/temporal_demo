@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'rails', '~> 7.0.0'
+gem 'puma'
+gem 'sqlite3'
+gem 'temporal-ruby'
+gem 'faraday'
