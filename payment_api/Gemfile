@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.0'
+gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'puma'
-gem 'sqlite3'
-gem 'temporal-ruby'
+gem 'temporalio'
 gem 'faraday'
+gem 'json'

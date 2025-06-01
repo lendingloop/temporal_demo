@@ -1,2 +1,5 @@
-require_relative 'config/environment'
-run PaymentApi::Application
+require 'rubygems'
+require 'bundler/setup'
+
+require_relative 'app'
+run PaymentAPI

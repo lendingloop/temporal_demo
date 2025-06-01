@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'temporal-ruby'
+gem 'temporalio'
 gem 'faraday'
 gem 'json'

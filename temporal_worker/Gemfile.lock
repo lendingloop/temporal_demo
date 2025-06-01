@@ -1,0 +1,102 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.2.1)
+    faraday (1.10.4)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (1.0.2)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
+    google-protobuf (4.31.1)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-aarch64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-aarch64-linux-musl)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86-linux-musl)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-linux-musl)
+      bigdecimal
+      rake (>= 13)
+    json (2.12.2)
+    logger (1.7.0)
+    multipart-post (2.4.1)
+    rake (13.3.0)
+    ruby2_keywords (0.0.5)
+    temporalio (0.4.0)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-aarch64-linux)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-aarch64-linux-musl)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-arm64-darwin)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-x86_64-darwin)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-x86_64-linux)
+      google-protobuf (>= 3.25.0)
+      logger
+    temporalio (0.4.0-x86_64-linux-musl)
+      google-protobuf (>= 3.25.0)
+      logger
+
+PLATFORMS
+  aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm64-darwin
+  ruby
+  x86-linux
+  x86-linux-gnu
+  x86-linux-musl
+  x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
+
+DEPENDENCIES
+  faraday
+  json
+  temporalio
+
+BUNDLED WITH
+   2.6.2

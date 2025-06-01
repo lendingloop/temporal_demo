@@ -1,5 +1,7 @@
 require 'grape'
 require 'json'
+require 'rack'
+require 'rack/handler/puma'
 
 module ComplianceAPI
   class API < Grape::API
