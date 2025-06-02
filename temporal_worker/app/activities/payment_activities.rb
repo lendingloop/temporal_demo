@@ -1,8 +1,22 @@
-require 'temporal/activity'
+require 'temporalio/activity'
 require 'securerandom'
 require 'json'
+require 'logger'
 
-class ValidateTransactionActivity < Temporal::Activity
+# Include ActivityLogging module if it exists, otherwise define it
+module ActivityLogging
+  def logger
+    @logger ||= Logger.new(STDOUT).tap do |l|
+      l.level = Logger::INFO
+      l.formatter = proc do |severity, datetime, progname, msg|
+        "[#{datetime}] #{severity}: [#{self.class.name}] #{msg}\n"
+      end
+    end
+  end
+end unless defined?(ActivityLogging)
+
+class ValidateTransactionActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(payment_data)
     logger.info "Validating transaction: #{payment_data[:amount]} #{payment_data[:charge_currency]}"
     
@@ -33,7 +47,8 @@ class ValidateTransactionActivity < Temporal::Activity
   end
 end
 
-class AuthorizePaymentActivity < Temporal::Activity
+class AuthorizePaymentActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     logger.info "Authorizing payment: #{params[:amount]} #{params[:currency]}"
     
@@ -61,7 +76,8 @@ class AuthorizePaymentActivity < Temporal::Activity
   end
 end
 
-class CapturePaymentActivity < Temporal::Activity
+class CapturePaymentActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     logger.info "Capturing payment with authorization: #{params[:authorization_id]}"
     
@@ -89,7 +105,8 @@ class CapturePaymentActivity < Temporal::Activity
   end
 end
 
-class ReleaseAuthorizationActivity < Temporal::Activity
+class ReleaseAuthorizationActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     logger.info "Releasing authorization: #{params[:authorization_id]}"
     
@@ -109,7 +126,8 @@ class ReleaseAuthorizationActivity < Temporal::Activity
   end
 end
 
-class UpdateLedgersActivity < Temporal::Activity
+class UpdateLedgersActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     logger.info "Updating ledgers for transaction: #{params[:transaction_id]}"
     
@@ -149,7 +167,8 @@ class UpdateLedgersActivity < Temporal::Activity
   end
 end
 
-class SendNotificationsActivity < Temporal::Activity
+class SendNotificationsActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     payment_data = params[:payment_data]
     state = params[:state]
@@ -195,7 +214,8 @@ class SendNotificationsActivity < Temporal::Activity
   end
 end
 
-class RefundPaymentActivity < Temporal::Activity
+class RefundPaymentActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
     logger.info "Refunding payment: #{params[:transaction_id]} for #{params[:amount]} #{params[:currency]}"
     

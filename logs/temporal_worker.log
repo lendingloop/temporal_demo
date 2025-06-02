@@ -1,0 +1,103 @@
+Starting Temporal Worker...
+Bundle complete! 3 Gemfile dependencies, 20 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+[2025-06-02 18:35:17 -0400] INFO: Starting Temporal worker...
+[2025-06-02 18:35:17 -0400] INFO: Worker process ID: 14252
+[2025-06-02 18:35:17 -0400] INFO: Ruby version: 3.4.2
+[2025-06-02 18:35:17 -0400] INFO: SDK version: 0.4.0
+[2025-06-02 18:35:17 -0400] INFO: Connecting to Temporal server at localhost:7233...
+[2025-06-02 18:35:17 -0400] INFO: Connected to Temporal server successfully!
+[2025-06-02 18:35:17 -0400] INFO: Client namespace: default
+[2025-06-02 18:35:17 -0400] INFO: Client successfully connected to namespace: default
+[2025-06-02 18:35:17 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-02 18:35:17 -0400] INFO: Press Ctrl-C to stop the worker
+[2025-06-02 18:35:17 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: CapturePaymentActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: SendNotificationsActivity
+[2025-06-02 18:35:17 -0400] INFO: Registering activity: RefundPaymentActivity
+[2025-06-02 18:35:17 -0400] INFO: Worker created successfully with 11 activities
+[2025-06-02 18:35:17 -0400] INFO: Starting worker run loop...
+[2025-06-02 18:35:17 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-02 18:35:39 -0400] INFO: [ACTIVITY] Validating transaction:  
+[2025-06-02 18:35:39 -0400] INFO: [ACTIVITY] Payment data: {"amount" => 3000.0, "charge_currency" => "CAD", "settlement_currency" => "USD", "customer" => {"business_name" => "Loop Card Customer", "email" => "customer@example.com"}, "merchant" => {"name" => "USA Vendor Inc", "country" => "US"}, "reference" => "DEMO-1748903739"}
+[2025-06-02 18:35:39 -0400] INFO: [ACTIVITY] Running fraud check for transaction: 3000.0 CAD
+[2025-06-02 18:35:41 -0400] ERROR: [ACTIVITY] ⚠️⚠️⚠️ Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)>
+W, [2025-06-02T18:35:41.950705 #14252]  WARN -- : Completing activity as failed {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 1, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}}
+W, [2025-06-02T18:35:41.950890 #14252]  WARN -- : Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)> (Service: compliance_api) {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 1, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}} (RuntimeError)
+/Users/yan/github.com/lendingloop/ruby-payments-temporal-demo/temporal_worker/app/activities/compliance_activities.rb:82:in 'RunFraudCheckActivity#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/activity/definition.rb:146:in 'block in Temporalio::Activity::Definition::Info.from_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:362:in 'Temporalio::Internal::Worker::ActivityWorker::InboundImplementation#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:256:in 'Temporalio::Internal::Worker::ActivityWorker#run_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:216:in 'Temporalio::Internal::Worker::ActivityWorker#execute_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:114:in 'block in Temporalio::Internal::Worker::ActivityWorker#handle_start_task'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:200:in 'block (3 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+<internal:kernel>:168:in 'Kernel#loop'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:193:in 'block (2 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'Kernel#catch'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'block in Temporalio::Worker::ThreadPool::Worker#initialize'
+[2025-06-02 18:35:42 -0400] INFO: [ACTIVITY] Payment data: {"amount" => 3000.0, "charge_currency" => "CAD", "settlement_currency" => "USD", "customer" => {"business_name" => "Loop Card Customer", "email" => "customer@example.com"}, "merchant" => {"name" => "USA Vendor Inc", "country" => "US"}, "reference" => "DEMO-1748903739"}
+[2025-06-02 18:35:42 -0400] INFO: [ACTIVITY] Running fraud check for transaction: 3000.0 CAD
+[2025-06-02 18:35:44 -0400] ERROR: [ACTIVITY] ⚠️⚠️⚠️ Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)>
+W, [2025-06-02T18:35:44.966313 #14252]  WARN -- : Completing activity as failed {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 2, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}}
+W, [2025-06-02T18:35:44.966442 #14252]  WARN -- : Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)> (Service: compliance_api) {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 2, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}} (RuntimeError)
+/Users/yan/github.com/lendingloop/ruby-payments-temporal-demo/temporal_worker/app/activities/compliance_activities.rb:82:in 'RunFraudCheckActivity#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/activity/definition.rb:146:in 'block in Temporalio::Activity::Definition::Info.from_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:362:in 'Temporalio::Internal::Worker::ActivityWorker::InboundImplementation#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:256:in 'Temporalio::Internal::Worker::ActivityWorker#run_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:216:in 'Temporalio::Internal::Worker::ActivityWorker#execute_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:114:in 'block in Temporalio::Internal::Worker::ActivityWorker#handle_start_task'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:200:in 'block (3 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+<internal:kernel>:168:in 'Kernel#loop'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:193:in 'block (2 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'Kernel#catch'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'block in Temporalio::Worker::ThreadPool::Worker#initialize'
+[2025-06-02 18:35:46 -0400] INFO: [ACTIVITY] Payment data: {"amount" => 3000.0, "charge_currency" => "CAD", "settlement_currency" => "USD", "customer" => {"business_name" => "Loop Card Customer", "email" => "customer@example.com"}, "merchant" => {"name" => "USA Vendor Inc", "country" => "US"}, "reference" => "DEMO-1748903739"}
+[2025-06-02 18:35:46 -0400] INFO: [ACTIVITY] Running fraud check for transaction: 3000.0 CAD
+[2025-06-02 18:35:48 -0400] ERROR: [ACTIVITY] ⚠️⚠️⚠️ Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)>
+W, [2025-06-02T18:35:48.979112 #14252]  WARN -- : Completing activity as failed {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 3, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}}
+W, [2025-06-02T18:35:48.979257 #14252]  WARN -- : Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)> (Service: compliance_api) {temporal_activity: {activity_id: "2", activity_type: "RunFraudCheckActivity", attempt: 3, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}} (RuntimeError)
+/Users/yan/github.com/lendingloop/ruby-payments-temporal-demo/temporal_worker/app/activities/compliance_activities.rb:82:in 'RunFraudCheckActivity#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/activity/definition.rb:146:in 'block in Temporalio::Activity::Definition::Info.from_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:362:in 'Temporalio::Internal::Worker::ActivityWorker::InboundImplementation#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:256:in 'Temporalio::Internal::Worker::ActivityWorker#run_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:216:in 'Temporalio::Internal::Worker::ActivityWorker#execute_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:114:in 'block in Temporalio::Internal::Worker::ActivityWorker#handle_start_task'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:200:in 'block (3 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+<internal:kernel>:168:in 'Kernel#loop'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:193:in 'block (2 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'Kernel#catch'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'block in Temporalio::Worker::ThreadPool::Worker#initialize'
+[2025-06-02 18:35:52 -0400] INFO: [ACTIVITY] Payment data: {"amount" => 3000.0, "charge_currency" => "CAD", "settlement_currency" => "USD", "customer" => {"business_name" => "Loop Card Customer", "email" => "customer@example.com"}, "merchant" => {"name" => "USA Vendor Inc", "country" => "US"}, "reference" => "DEMO-1748903739"}
+[2025-06-02 18:35:52 -0400] INFO: [ACTIVITY] Running fraud check for transaction: 3000.0 CAD
+[2025-06-02 18:35:53 -0400] INFO: [ACTIVITY] ✅ Fraud check passed with risk score: 16.53
+[2025-06-02 18:35:54 -0400] INFO: [ACTIVITY] Payment data: {"amount" => 3000.0, "charge_currency" => "CAD", "settlement_currency" => "USD", "customer" => {"business_name" => "Loop Card Customer", "email" => "customer@example.com"}, "merchant" => {"name" => "USA Vendor Inc", "country" => "US"}, "reference" => "DEMO-1748903739"}
+[2025-06-02 18:35:54 -0400] INFO: [ACTIVITY] Running AML check for transaction: 3000.0 CAD
+[2025-06-02 18:35:55 -0400] ERROR: [ACTIVITY] ⚠️⚠️⚠️ Compliance API unavailable: Net::ReadTimeout with #<TCPSocket:(closed)>
+[2025-06-02 18:35:55 -0400] INFO: [ACTIVITY] ✅ [MOCK] AML check passed with score: 25.45 (mock due to connection error)
+[2025-06-02 18:35:55 -0400] INFO: [ACTIVITY] FX params: {"from" => "CAD", "to" => "USD"}
+[2025-06-02 18:35:55 -0400] INFO: [ACTIVITY] Getting exchange rate from CAD to USD
+[2025-06-02 18:35:55 -0400] INFO: [ACTIVITY] ✅ Got exchange rate: 0.7426 and lock ID: 9717e4bc-87a4-49fd-bfc1-1a2970acfda2
+[2025-06-02 18:35:55 -0400] INFO: [ACTIVITY] Capturing payment with authorization: 
+W, [2025-06-02T18:35:55.637637 #14252]  WARN -- : Completing activity as failed {temporal_activity: {activity_id: "5", activity_type: "CapturePaymentActivity", attempt: 1, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}}
+W, [2025-06-02T18:35:55.637683 #14252]  WARN -- : Payment capture failed: Processor error {temporal_activity: {activity_id: "5", activity_type: "CapturePaymentActivity", attempt: 1, task_queue: "payment-task-queue", workflow_id: "payment-DEMO-1748903739", workflow_namespace: "default", workflow_run_id: "019732c9-421a-75d8-be57-d4f10e69a6bf", workflow_type: "MultiCurrencyPaymentWorkflow"}} (RuntimeError)
+/Users/yan/github.com/lendingloop/ruby-payments-temporal-demo/temporal_worker/app/activities/payment_activities.rb:93:in 'CapturePaymentActivity#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/activity/definition.rb:146:in 'block in Temporalio::Activity::Definition::Info.from_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:362:in 'Temporalio::Internal::Worker::ActivityWorker::InboundImplementation#execute'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:256:in 'Temporalio::Internal::Worker::ActivityWorker#run_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:216:in 'Temporalio::Internal::Worker::ActivityWorker#execute_activity'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/internal/worker/activity_worker.rb:114:in 'block in Temporalio::Internal::Worker::ActivityWorker#handle_start_task'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:200:in 'block (3 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+<internal:kernel>:168:in 'Kernel#loop'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:193:in 'block (2 levels) in Temporalio::Worker::ThreadPool::Worker#initialize'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'Kernel#catch'
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/temporalio-0.4.0-arm64-darwin/lib/temporalio/worker/thread_pool.rb:192:in 'block in Temporalio::Worker::ThreadPool::Worker#initialize'
+[2025-06-02 18:35:56 -0400] INFO: [ACTIVITY] Capturing payment with authorization: 
+[2025-06-02 18:35:57 -0400] INFO: [ACTIVITY] Payment captured with transaction ID: txn-bad76d84-e71b-4ca1-9e95-9031efe0fc12

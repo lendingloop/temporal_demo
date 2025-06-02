@@ -161,7 +161,7 @@ class PaymentAPI < Sinatra::Base
       if status == "COMPLETED"
         begin
           logger.debug("Getting workflow result")
-          result = handle.result(timeout: 2) # Short timeout for completed workflows
+          result = handle.result # Get workflow result without timeout parameter
           logger.debug("Workflow result: #{result.inspect}")
         rescue => e
           logger.warn("Could not get workflow result: #{e.message}")

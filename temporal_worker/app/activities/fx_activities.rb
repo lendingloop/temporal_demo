@@ -1,38 +1,116 @@
-require 'temporal/activity'
+require 'temporalio/activity'
 require 'faraday'
 require 'json'
 require 'securerandom'
+require 'logger'
 
-class GetExchangeRateActivity < Temporal::Activity
+# Include ActivityLogging module if it exists, otherwise define it
+module ActivityLogging
+  def logger
+    @logger ||= Logger.new(STDOUT).tap do |l|
+      l.level = Logger::INFO
+      l.formatter = proc do |severity, datetime, progname, msg|
+        "[#{datetime}] #{severity}: [ACTIVITY] #{msg}\n"
+      end
+    end
+  end
+end unless defined?(ActivityLogging)
+
+class GetExchangeRateActivity < Temporalio::Activity::Definition
+  include ActivityLogging
   def execute(params)
-    logger.info "Getting exchange rate from #{params[:from]} to #{params[:to]}"
+    # Add detailed logging of params
+    logger.info "FX params: #{params.inspect}"
     
-    # Connect to FX Service to get exchange rate
+    # Handle both string and symbol keys for compatibility
+    from_currency = params[:from] || params['from']
+    to_currency = params[:to] || params['to']
+    
+    logger.info "Getting exchange rate from #{from_currency} to #{to_currency}"
+    
+    begin
+      # Connect to FX Service to get exchange rate
+      conn = Faraday.new(url: 'http://localhost:3001') do |f|
+        f.options.timeout = 2  # 2 second timeout for demo
+        f.options.open_timeout = 1
+      end
+      
+      # Lock in an exchange rate
+      response = conn.post('/api/lock_rate') do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.body = {
+          from: from_currency,
+          to: to_currency
+        }.to_json
+      end
+      
+      if response.status != 200
+        error_body = JSON.parse(response.body)
+        error_message = "Failed to get exchange rate: #{error_body['error'] || 'Unknown error'}"
+        logger.error "⚠️ #{error_message}"
+        
+        # Raise a Temporal error that will fail the workflow
+        raise RuntimeError, "#{error_message} (FX error: #{error_body.to_json})"
+      end
+      
+      result = JSON.parse(response.body)
+      
+      logger.info "✅ Got exchange rate: #{result['rate']} and lock ID: #{result['lock_id']}"
+      
+      return {
+        rate: result['rate'],
+        lock_id: result['lock_id'],
+        from: result['from'],
+        to: result['to']
+      }
+    rescue Faraday::Error => e
+      # API connection error - THIS WILL HAPPEN WHEN FX SERVICE IS DOWN
+      error_message = "FX Service unavailable: #{e.message}"
+      logger.error "⚠️⚠️⚠️ #{error_message}"
+      
+      # Raise an error that will fail the workflow
+      # This will ensure the workflow shows as failed in Temporal UI
+      raise RuntimeError, "#{error_message} (Service: fx_service)"
+    end
+  end
+end
+
+class ReleaseRateLockActivity < Temporalio::Activity::Definition
+  include ActivityLogging
+  def execute(params)
+    # Add detailed logging of params
+    logger.info "Release params: #{params.inspect}"
+    
+    # Handle both string and symbol keys for compatibility
+    lock_id = params[:lock_id] || params['lock_id']
+    
+    logger.info "Releasing exchange rate lock: #{lock_id}"
+    
+    # Connect to FX Service to release the rate lock
     conn = Faraday.new(url: 'http://localhost:3001')
     
-    # Lock in an exchange rate
-    response = conn.post('/api/lock_rate') do |req|
+    # Release the exchange rate lock
+    response = conn.post('/api/release_lock') do |req|
       req.headers['Content-Type'] = 'application/json'
       req.body = {
-        from: params[:from],
-        to: params[:to]
+        lock_id: lock_id
       }.to_json
     end
     
     if response.status != 200
       error_body = JSON.parse(response.body)
-      raise "Failed to get exchange rate: #{error_body['error'] || 'Unknown error'}"
+      logger.error "Failed to release rate lock: #{error_body['error'] || 'Unknown error'}"
+      # Don't raise an exception here as this is a compensation activity
+      # We want to continue with other compensations even if this one fails
+      return { success: false, error: error_body['error'] || 'Unknown error' }
     end
     
-    result = JSON.parse(response.body)
-    
-    logger.info "Got exchange rate: #{result['rate']} and lock ID: #{result['lock_id']}"
+    logger.info "Successfully released rate lock: #{params[:lock_id]}"
     
     return {
-      rate: result['rate'],
-      lock_id: result['lock_id'],
-      from: result['from'],
-      to: result['to']
+      success: true,
+      lock_id: params[:lock_id],
+      released_at: Time.now.utc.iso8601
     }
   end
 end

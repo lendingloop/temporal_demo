@@ -1,0 +1,55 @@
+Starting Payment API on port 3000...
+Bundle complete! 6 Gemfile dependencies, 29 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/rack-2.2.16/lib/rack/show_exceptions.rb:3: warning: ostruct was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
+You can add ostruct to your Gemfile or gemspec to silence this warning.
+== Sinatra (v2.2.3) has taken the stage on 3000 for development with backup from Puma
+Starting Payment API on port 3000...
+Puma starting in single mode...
+* Puma version: 5.6.9 (ruby 3.4.2-p28) ("Birdie's Version")
+*  Min threads: 0
+*  Max threads: 5
+*  Environment: development
+*          PID: 14254
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+Use Ctrl-C to stop
+::1 - - [02/Jun/2025:18:35:39 -0400] "GET /health HTTP/1.1" 200 39 0.0029
+D, [2025-06-02T18:35:39.927131 #14254] DEBUG -- : Connecting to Temporal server at localhost:7233
+D, [2025-06-02T18:35:39.929538 #14254] DEBUG -- : Successfully connected to Temporal server
+::1 - - [02/Jun/2025:18:35:39 -0400] "POST /api/payments HTTP/1.1" 202 125 0.0046
+D, [2025-06-02T18:35:39.941831 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
+D, [2025-06-02T18:35:39.941872 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
+D, [2025-06-02T18:35:39.941885 #14254] DEBUG -- : Returning existing Temporal client
+D, [2025-06-02T18:35:39.941896 #14254] DEBUG -- : Successfully created workflow handle
+D, [2025-06-02T18:35:39.941904 #14254] DEBUG -- : Getting workflow description
+D, [2025-06-02T18:35:39.943375 #14254] DEBUG -- : Workflow status: 1
+::1 - - [02/Jun/2025:18:35:39 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0022
+D, [2025-06-02T18:35:42.972242 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
+D, [2025-06-02T18:35:42.972321 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
+D, [2025-06-02T18:35:42.972346 #14254] DEBUG -- : Returning existing Temporal client
+D, [2025-06-02T18:35:42.972364 #14254] DEBUG -- : Successfully created workflow handle
+D, [2025-06-02T18:35:42.972374 #14254] DEBUG -- : Getting workflow description
+D, [2025-06-02T18:35:42.974213 #14254] DEBUG -- : Workflow status: 1
+::1 - - [02/Jun/2025:18:35:42 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0029
+D, [2025-06-02T18:35:46.000387 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
+D, [2025-06-02T18:35:46.000470 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
+D, [2025-06-02T18:35:46.000497 #14254] DEBUG -- : Returning existing Temporal client
+D, [2025-06-02T18:35:46.000515 #14254] DEBUG -- : Successfully created workflow handle
+D, [2025-06-02T18:35:46.000525 #14254] DEBUG -- : Getting workflow description
+D, [2025-06-02T18:35:46.002797 #14254] DEBUG -- : Workflow status: 1
+::1 - - [02/Jun/2025:18:35:46 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0031
+D, [2025-06-02T18:35:49.023080 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
+D, [2025-06-02T18:35:49.023127 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
+D, [2025-06-02T18:35:49.023148 #14254] DEBUG -- : Returning existing Temporal client
+D, [2025-06-02T18:35:49.023162 #14254] DEBUG -- : Successfully created workflow handle
+D, [2025-06-02T18:35:49.023171 #14254] DEBUG -- : Getting workflow description
+D, [2025-06-02T18:35:49.024621 #14254] DEBUG -- : Workflow status: 1
+::1 - - [02/Jun/2025:18:35:49 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0019
+D, [2025-06-02T18:35:52.047342 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
+D, [2025-06-02T18:35:52.047427 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
+D, [2025-06-02T18:35:52.047471 #14254] DEBUG -- : Returning existing Temporal client
+D, [2025-06-02T18:35:52.047487 #14254] DEBUG -- : Successfully created workflow handle
+D, [2025-06-02T18:35:52.047496 #14254] DEBUG -- : Getting workflow description
+D, [2025-06-02T18:35:52.049683 #14254] DEBUG -- : Workflow status: 1
+::1 - - [02/Jun/2025:18:35:52 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0030
