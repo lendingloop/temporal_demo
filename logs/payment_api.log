@@ -1,55 +1,84 @@
 Starting Payment API on port 3000...
-Bundle complete! 6 Gemfile dependencies, 29 gems now installed.
-Use `bundle info [gemname]` to see where a bundled gem is installed.
-/Users/yan/.local/share/mise/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/rack-2.2.16/lib/rack/show_exceptions.rb:3: warning: ostruct was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
-You can add ostruct to your Gemfile or gemspec to silence this warning.
-== Sinatra (v2.2.3) has taken the stage on 3000 for development with backup from Puma
-Starting Payment API on port 3000...
-Puma starting in single mode...
-* Puma version: 5.6.9 (ruby 3.4.2-p28) ("Birdie's Version")
-*  Min threads: 0
-*  Max threads: 5
-*  Environment: development
-*          PID: 14254
-* Listening on http://127.0.0.1:3000
-* Listening on http://[::1]:3000
-Use Ctrl-C to stop
-::1 - - [02/Jun/2025:18:35:39 -0400] "GET /health HTTP/1.1" 200 39 0.0029
-D, [2025-06-02T18:35:39.927131 #14254] DEBUG -- : Connecting to Temporal server at localhost:7233
-D, [2025-06-02T18:35:39.929538 #14254] DEBUG -- : Successfully connected to Temporal server
-::1 - - [02/Jun/2025:18:35:39 -0400] "POST /api/payments HTTP/1.1" 202 125 0.0046
-D, [2025-06-02T18:35:39.941831 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
-D, [2025-06-02T18:35:39.941872 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
-D, [2025-06-02T18:35:39.941885 #14254] DEBUG -- : Returning existing Temporal client
-D, [2025-06-02T18:35:39.941896 #14254] DEBUG -- : Successfully created workflow handle
-D, [2025-06-02T18:35:39.941904 #14254] DEBUG -- : Getting workflow description
-D, [2025-06-02T18:35:39.943375 #14254] DEBUG -- : Workflow status: 1
-::1 - - [02/Jun/2025:18:35:39 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0022
-D, [2025-06-02T18:35:42.972242 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
-D, [2025-06-02T18:35:42.972321 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
-D, [2025-06-02T18:35:42.972346 #14254] DEBUG -- : Returning existing Temporal client
-D, [2025-06-02T18:35:42.972364 #14254] DEBUG -- : Successfully created workflow handle
-D, [2025-06-02T18:35:42.972374 #14254] DEBUG -- : Getting workflow description
-D, [2025-06-02T18:35:42.974213 #14254] DEBUG -- : Workflow status: 1
-::1 - - [02/Jun/2025:18:35:42 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0029
-D, [2025-06-02T18:35:46.000387 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
-D, [2025-06-02T18:35:46.000470 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
-D, [2025-06-02T18:35:46.000497 #14254] DEBUG -- : Returning existing Temporal client
-D, [2025-06-02T18:35:46.000515 #14254] DEBUG -- : Successfully created workflow handle
-D, [2025-06-02T18:35:46.000525 #14254] DEBUG -- : Getting workflow description
-D, [2025-06-02T18:35:46.002797 #14254] DEBUG -- : Workflow status: 1
-::1 - - [02/Jun/2025:18:35:46 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0031
-D, [2025-06-02T18:35:49.023080 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
-D, [2025-06-02T18:35:49.023127 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
-D, [2025-06-02T18:35:49.023148 #14254] DEBUG -- : Returning existing Temporal client
-D, [2025-06-02T18:35:49.023162 #14254] DEBUG -- : Successfully created workflow handle
-D, [2025-06-02T18:35:49.023171 #14254] DEBUG -- : Getting workflow description
-D, [2025-06-02T18:35:49.024621 #14254] DEBUG -- : Workflow status: 1
-::1 - - [02/Jun/2025:18:35:49 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0019
-D, [2025-06-02T18:35:52.047342 #14254] DEBUG -- : GET /api/payments/payment-DEMO-1748903739 - Retrieving payment status
-D, [2025-06-02T18:35:52.047427 #14254] DEBUG -- : Creating workflow handle for workflow_id: payment-DEMO-1748903739
-D, [2025-06-02T18:35:52.047471 #14254] DEBUG -- : Returning existing Temporal client
-D, [2025-06-02T18:35:52.047487 #14254] DEBUG -- : Successfully created workflow handle
-D, [2025-06-02T18:35:52.047496 #14254] DEBUG -- : Getting workflow description
-D, [2025-06-02T18:35:52.049683 #14254] DEBUG -- : Workflow status: 1
-::1 - - [02/Jun/2025:18:35:52 -0400] "GET /api/payments/payment-DEMO-1748903739 HTTP/1.1" 200 128 0.0030
+Fetching gem metadata from https://rubygems.org/......
+Installing temporalio 0.4.0 with native extensions
+Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+
+current directory:
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/temporalio-0.4.0/ext
+cargo rustc --target-dir
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/extensions/arm64-darwin-24/3.1.0/temporalio-0.4.0
+--manifest-path
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/temporalio-0.4.0/ext/Cargo.toml
+--lib --profile release --locked -- -C linker\=clang -L
+native\=/Users/yan/.rbenv/versions/3.1.6/lib -C
+link_arg\=-Wl,-undefined,dynamic_lookup -C
+link-arg\=-Wl,-undefined,dynamic_lookup -C debuginfo\=1
+cargo failedNo such file or directory - cargo
+
+Gem files will remain installed in
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/temporalio-0.4.0 for
+inspection.
+Results logged to
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/extensions/arm64-darwin-24/3.1.0/temporalio-0.4.0/gem_make.out
+
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:77:in
+`rescue in run'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:74:in
+`run'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/cargo_builder.rb:32:in
+`call'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/cargo_builder.rb:32:in
+`build_crate'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/cargo_builder.rb:22:in
+`build'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:171:in
+`build_extension'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:205:in
+`block in build_extensions'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:202:in
+`each'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/ext/builder.rb:202:in
+`build_extensions'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/installer.rb:843:in
+`build_extensions'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/rubygems_gem_installer.rb:111:in
+`build_extensions'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/rubygems_gem_installer.rb:30:in
+`install'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/source/rubygems.rb:205:in
+`install'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/installer/gem_installer.rb:55:in
+`install'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/installer/gem_installer.rb:17:in
+`install_from_spec'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/installer/parallel_installer.rb:133:in
+`do_install'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/installer/parallel_installer.rb:124:in
+`block in worker_pool'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/worker.rb:62:in
+`apply_func'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/worker.rb:57:in
+`block in process_queue'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/worker.rb:54:in
+`loop'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/worker.rb:54:in
+`process_queue'
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/worker.rb:90:in
+`block (2 levels) in create_threads'
+
+An error occurred while installing temporalio (0.4.0), and Bundler cannot
+continue.
+
+In Gemfile:
+  temporalio
+/Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/definition.rb:676:in `materialize': Could not find temporalio-0.4.0-arm64-darwin, temporalio-0.4.0 in locally installed gems (Bundler::GemNotFound)
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/definition.rb:232:in `specs'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/definition.rb:299:in `specs_for'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/runtime.rb:18:in `setup'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler.rb:167:in `setup'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/setup.rb:32:in `block in <top (required)>'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/ui/shell.rb:173:in `with_level'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/ui/shell.rb:119:in `silence'
+	from /Users/yan/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/bundler-2.6.2/lib/bundler/setup.rb:32:in `<top (required)>'
+	from <internal:/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/core_ext/kernel_require.rb>:85:in `require'
+	from <internal:/Users/yan/.rbenv/versions/3.1.6/lib/ruby/3.1.0/rubygems/core_ext/kernel_require.rb>:85:in `require'

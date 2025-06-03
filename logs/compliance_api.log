@@ -3,11 +3,11 @@ Bundle complete! 4 Gemfile dependencies, 26 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 Puma starting in single mode...
 * Puma version: 6.6.0 ("Return to Forever")
-* Ruby version: ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [arm64-darwin24]
+* Ruby version: ruby 3.1.6p260 (2024-05-29 revision a777087be6) [arm64-darwin24]
 *  Min threads: 0
 *  Max threads: 5
 *  Environment: development
-*          PID: 14253
+*          PID: 14562
 * Listening on http://127.0.0.1:3002
 * Listening on http://[::1]:3002
 Use Ctrl-C to stop
