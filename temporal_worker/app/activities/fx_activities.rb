@@ -30,7 +30,7 @@ class GetExchangeRateActivity < Temporalio::Activity::Definition
     
     begin
       # Connect to FX Service to get exchange rate - Use Docker service name instead of localhost
-      conn = Faraday.new(url: 'http://fx-service:3001') do |f|
+      conn = Faraday.new(url: 'http://fx_service:3001') do |f|
         f.options.timeout = 2  # 2 second timeout for demo
         f.options.open_timeout = 1
       end
@@ -38,6 +38,8 @@ class GetExchangeRateActivity < Temporalio::Activity::Definition
       # Lock in an exchange rate
       response = conn.post('/api/lock_rate') do |req|
         req.headers['Content-Type'] = 'application/json'
+        # Add the Host header to bypass Sinatra's host protection
+        req.headers['Host'] = 'localhost'
         req.body = {
           from: from_currency,
           to: to_currency
@@ -49,15 +51,9 @@ class GetExchangeRateActivity < Temporalio::Activity::Definition
         error_message = "Failed to get exchange rate: #{error_body['error'] || 'Unknown error'}"
         logger.error "⚠️ #{error_message}"
         
-        # For demo purposes, return a mock response instead of failing
-        logger.info "✅ [MOCK] Using fallback exchange rate: 0.75"
-        return {
-          rate: 0.75,
-          lock_id: SecureRandom.uuid,
-          from: from_currency,
-          to: to_currency,
-          mock: true
-        }
+        # Let the activity fail so Temporal will retry it
+        logger.error "❌ FX Service returned error status #{response.status} - activity will fail and Temporal will retry based on retry policy"
+        raise "FX Service error: #{error_message}"
       end
       
       result = JSON.parse(response.body)
@@ -75,15 +71,10 @@ class GetExchangeRateActivity < Temporalio::Activity::Definition
       error_message = "FX Service unavailable: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # For demo purposes, return a mock response instead of failing
-      logger.info "✅ [MOCK] Using fallback exchange rate: 0.75"
-      return {
-        rate: 0.75,
-        lock_id: SecureRandom.uuid,
-        from: from_currency,
-        to: to_currency,
-        mock: true
-      }
+      # Instead of mocking, let the activity fail so Temporal will retry it
+      # This is the proper pattern for Temporal workflows
+      logger.error "❌ FX Service failure - activity will fail and Temporal will retry based on retry policy"
+      raise "FX Service unavailable: #{e.message}"
     end
   end
 end
@@ -99,24 +90,21 @@ class ReleaseRateLockActivity < Temporalio::Activity::Definition
     
     logger.info "Releasing exchange rate lock: #{lock_id}"
     
-    # Check if this is a mock lock ID from our fallback
+    # We no longer have mock responses, but we'll handle this gracefully
+    # in case there are existing workflows with mock=true
     if params[:mock] || params['mock']
-      logger.info "Mock lock detected, no need to release"
-      return {
-        success: true,
-        lock_id: lock_id,
-        mock: true,
-        released_at: Time.now.utc.iso8601
-      }
+      logger.info "Mock lock detected, but proceeding with release attempt anyway"
     end
     
     begin
       # Connect to FX Service to release the rate lock - Use Docker service name instead of localhost
-      conn = Faraday.new(url: 'http://fx-service:3001')
+      conn = Faraday.new(url: 'http://fx_service:3001')
       
       # Release the exchange rate lock
       response = conn.post('/api/release_lock') do |req|
         req.headers['Content-Type'] = 'application/json'
+        # Add the Host header to bypass Sinatra's host protection
+        req.headers['Host'] = 'localhost'
         req.body = {
           lock_id: lock_id
         }.to_json
@@ -142,12 +130,9 @@ class ReleaseRateLockActivity < Temporalio::Activity::Definition
       error_message = "FX Service unavailable when releasing lock: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # Don't raise an exception, just return the error
-      return { 
-        success: false, 
-        error: error_message,
-        lock_id: lock_id
-      }
+      # Let the activity fail so Temporal will retry it
+      logger.error "❌ FX Service unavailable when releasing lock - activity will fail and Temporal will retry"
+      raise "FX Service unavailable when releasing lock: #{e.message}"
     end
   end
 end

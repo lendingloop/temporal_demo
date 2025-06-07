@@ -170,5 +170,5 @@ if __FILE__ == $0
   end
   
   # Start Puma server
-  Rack::Handler::Puma.run(app, Port: 3002, Host: 'localhost')
+  Rack::Handler::Puma.run(app, Port: 3002, Host: '0.0.0.0')
 end

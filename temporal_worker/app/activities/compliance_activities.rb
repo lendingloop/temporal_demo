@@ -37,7 +37,7 @@ class RunFraudCheckActivity < Temporalio::Activity::Definition
     
     # First check if Compliance API is up with a short timeout
     begin
-      conn = Faraday.new(url: 'http://compliance-api:3002') do |f|
+      conn = Faraday.new(url: 'http://compliance_api:3002') do |f|
         f.options.timeout = 2  # 2 second timeout for demo
         f.options.open_timeout = 1
       end
@@ -70,14 +70,9 @@ class RunFraudCheckActivity < Temporalio::Activity::Definition
         error_message = "Fraud check failed: #{reason}"
         logger.error "⚠️ #{error_message}"
         
-        # For demo purposes, return a mock success response instead of failing
-        logger.info "✅ [MOCK] Fraud check passed with risk score: 45.5 (mock due to service error)"
-        return {
-          success: true,
-          result: 'pass',
-          risk_score: 45.5,
-          mock: true
-        }
+        # Let the activity fail so Temporal will retry it
+        logger.error "❌ Fraud check failed - activity will fail and Temporal will retry based on retry policy"
+        raise "Fraud check failed: #{reason}"
       end
       
       logger.info "✅ Fraud check passed with risk score: #{result['risk_score']}"
@@ -92,31 +87,16 @@ class RunFraudCheckActivity < Temporalio::Activity::Definition
       error_message = "Compliance API unavailable: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # Check if this is a high-value payment (>= $5000)
+      # Log if this is a high-value payment, but still fail properly
       amount = data[:amount] || data['amount'] || 0.0
       high_value = amount >= 5000.0
-      
       if high_value
-        # For high-value transactions, return a mock response requiring approval
-        logger.info "⚠️ [MOCK] High-value payment detected: $#{amount} - Requires manual approval"
-        return {
-          success: true,
-          result: 'review',
-          risk_score: 85.5, # Higher risk score for high-value payments
-          requires_approval: true,
-          reason: 'High-value transaction requires manual approval',
-          mock: true
-        }
-      else
-        # For normal transactions, return a standard mock success
-        logger.info "✅ [MOCK] Fraud check passed with risk score: 45.5 (mock due to connection error)"
-        return {
-          success: true,
-          result: 'pass',
-          risk_score: 45.5,
-          mock: true
-        }
+        logger.info "High-value payment detected: $#{amount}"
       end
+      
+      # Let the activity fail so Temporal will retry it
+      logger.error "❌ Compliance API unavailable - activity will fail and Temporal will retry based on retry policy"
+      raise "Compliance API unavailable: #{e.message}"
     end
   end
 end
@@ -143,13 +123,13 @@ class RunAmlCheckActivity < Temporalio::Activity::Definition
     
     # First check if Compliance API is up with an even shorter timeout
     begin
-      conn = Faraday.new(url: 'http://compliance-api:3002') do |f|
-        f.options.timeout = 1  # 1 second timeout for demo
-        f.options.open_timeout = 0.5  # Half second connection timeout
+      conn = Faraday.new(url: 'http://compliance_api:3002') do |f|
+        f.options.timeout = 5  # 5 second timeout for demo
+        f.options.open_timeout = 2  # 2 second connection timeout
       end
       
       # First try a health check with minimal timeout
-      health_response = conn.get('/health')
+      health_response = conn.get('/api/health')
       unless health_response.status == 200
         raise RuntimeError, "Compliance API health check failed with status: #{health_response.status}"
       end
@@ -182,14 +162,9 @@ class RunAmlCheckActivity < Temporalio::Activity::Definition
         error_message = "AML check failed: #{reason}"
         logger.error "⚠️ #{error_message}"
         
-        # For demo purposes, return a mock success response instead of failing
-        logger.info "✅ [MOCK] AML check passed with override (mock due to service error)"
-        return {
-          success: true,
-          result: 'pass',
-          aml_score: 25.45,
-          mock: true
-        }
+        # Let the activity fail so Temporal will retry it
+        logger.error "❌ AML check failed - activity will fail and Temporal will retry based on retry policy"
+        raise "AML check failed: #{reason}"
       end
       
       logger.info "✅ AML check passed with score: #{result['aml_score']}"
@@ -204,14 +179,9 @@ class RunAmlCheckActivity < Temporalio::Activity::Definition
       error_message = "Compliance API unavailable: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # For demo purposes, return a mock success response instead of failing
-      logger.info "✅ [MOCK] AML check passed with score: 25.45 (mock due to connection error)"
-      return {
-        success: true,
-        result: 'pass',
-        aml_score: 25.45,
-        mock: true
-      }
+      # Let the activity fail so Temporal will retry it
+      logger.error "❌ Compliance API unavailable for AML check - activity will fail and Temporal will retry"
+      raise "Compliance API unavailable: #{e.message}"
     end
   end
 end
@@ -238,9 +208,9 @@ class RunSanctionsCheckActivity < Temporalio::Activity::Definition
     
     begin
       # Connect to Compliance API
-      conn = Faraday.new(url: 'http://compliance-api:3002') do |f|
-        f.options.timeout = 1  # 1 second timeout for demo
-        f.options.open_timeout = 0.5  # Half second connection timeout
+      conn = Faraday.new(url: 'http://compliance_api:3002') do |f|
+        f.options.timeout = 5  # 5 second timeout for demo
+        f.options.open_timeout = 2  # 2 second connection timeout
       end
       
       # Prepare all data outside the block to avoid scoping issues
@@ -270,13 +240,9 @@ class RunSanctionsCheckActivity < Temporalio::Activity::Definition
         reason = result['reason'] || (result['success'] == false ? 'Failed check' : 'Unknown error')
         logger.error "Sanctions check failed: #{reason}"
         
-        # For demo purposes, return a mock success response instead of failing
-        logger.info "✅ [MOCK] Sanctions check passed (mock due to service error)"
-        return {
-          success: true,
-          result: 'pass',
-          details: 'No sanctions found (mocked response)'
-        }
+        # Let the activity fail so Temporal will retry it
+        logger.error "❌ Sanctions check failed - activity will fail and Temporal will retry"
+        raise "Sanctions check failed: #{reason}"
       end
       
       logger.info "Sanctions check passed: #{result['details']}"
@@ -291,13 +257,9 @@ class RunSanctionsCheckActivity < Temporalio::Activity::Definition
       error_message = "Compliance API unavailable: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # For demo purposes, return a mock success response instead of failing
-      logger.info "✅ [MOCK] Sanctions check passed (mock due to connection error)"
-      return {
-        success: true,
-        result: 'pass',
-        details: 'No sanctions found (mocked response)'
-      }
+      # Let the activity fail so Temporal will retry it
+      logger.error "❌ Compliance API unavailable for Sanctions check - activity will fail and Temporal will retry"
+      raise "Compliance API unavailable for Sanctions check: #{e.message}"
     end
   end
 end

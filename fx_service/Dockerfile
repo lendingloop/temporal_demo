@@ -16,4 +16,4 @@ COPY . .
 
 # Run the service
 EXPOSE 3001
-CMD ["ruby", "app/app.rb"]
+CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "3001"]
