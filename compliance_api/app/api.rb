@@ -42,12 +42,24 @@ module ComplianceAPI
         # Simulate processing time
         sleep(rand(1..3))
         
+        # Check for high-value transactions requiring manual approval (threshold: $5000)
+        is_high_value = params[:amount] >= 5000.0
+        
         # Check for fraud indicators
         is_high_risk = params[:amount] > HIGH_RISK_INDICATORS[:amount]
         is_high_risk ||= HIGH_RISK_INDICATORS[:suspicious_businesses].include?(params[:customer][:business_name])
         
-        # For demo purposes, we'll randomly fail some high-risk transactions
-        if is_high_risk && rand > 0.7
+        if is_high_value
+          # High-value transaction requires manual approval
+          { 
+            success: true, 
+            result: 'manual_review_required',
+            risk_score: (rand * 30 + 40).round(2),
+            requires_approval: true,
+            reason: 'High-value transaction requires manual approval'
+          }
+        elsif is_high_risk && rand > 0.7
+          # For demo purposes, we'll randomly fail some high-risk transactions
           status 400
           { 
             success: false, 
@@ -59,7 +71,8 @@ module ComplianceAPI
           { 
             success: true, 
             result: 'passed',
-            risk_score: is_high_risk ? (rand * 30 + 40).round(2) : (rand * 30).round(2) # 40-70 for high risk, 0-30 for normal
+            risk_score: is_high_risk ? (rand * 30 + 40).round(2) : (rand * 30).round(2), # 40-70 for high risk, 0-30 for normal
+            requires_approval: false
           }
         end
       end

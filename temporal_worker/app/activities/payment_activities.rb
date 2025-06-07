@@ -251,3 +251,36 @@ class RefundPaymentActivity < Temporalio::Activity::Definition
     }
   end
 end
+
+class WaitForManualApprovalActivity < Temporalio::Activity::Definition
+  include ActivityLogging
+  
+  # Accept only a simple payment reference string
+  def execute(payment_reference)
+    # Simple validation of input
+    reference = payment_reference.to_s
+    
+    # Log the activity execution
+    logger.info "Waiting for manual approval for high-value payment: #{reference}"
+    logger.info "Payment #{reference} added to manual approval queue"
+    
+    # Simulate review time (5 seconds for demo)
+    sleep(5)
+    
+    # In real implementation, admin would make a decision through an admin UI
+    # For demo purposes, randomly approve 80% of transactions
+    is_approved = rand > 0.2
+    
+    # Return only simple strings - no complex objects
+    if is_approved
+      logger.info "✅ Payment #{reference} APPROVED by manual review"
+      return "approved"
+    else
+      logger.info "❌ Payment #{reference} REJECTED by manual review"
+      return "rejected"
+    end
+  rescue => e
+    logger.error "⚠️ Error in manual approval: #{e.message}"
+    return "error"
+  end
+end

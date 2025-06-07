@@ -92,14 +92,31 @@ class RunFraudCheckActivity < Temporalio::Activity::Definition
       error_message = "Compliance API unavailable: #{e.message}"
       logger.error "⚠️⚠️⚠️ #{error_message}"
       
-      # For demo purposes, return a mock success response instead of failing
-      logger.info "✅ [MOCK] Fraud check passed with risk score: 45.5 (mock due to connection error)"
-      return {
-        success: true,
-        result: 'pass',
-        risk_score: 45.5,
-        mock: true
-      }
+      # Check if this is a high-value payment (>= $5000)
+      amount = data[:amount] || data['amount'] || 0.0
+      high_value = amount >= 5000.0
+      
+      if high_value
+        # For high-value transactions, return a mock response requiring approval
+        logger.info "⚠️ [MOCK] High-value payment detected: $#{amount} - Requires manual approval"
+        return {
+          success: true,
+          result: 'review',
+          risk_score: 85.5, # Higher risk score for high-value payments
+          requires_approval: true,
+          reason: 'High-value transaction requires manual approval',
+          mock: true
+        }
+      else
+        # For normal transactions, return a standard mock success
+        logger.info "✅ [MOCK] Fraud check passed with risk score: 45.5 (mock due to connection error)"
+        return {
+          success: true,
+          result: 'pass',
+          risk_score: 45.5,
+          mock: true
+        }
+      end
     end
   end
 end

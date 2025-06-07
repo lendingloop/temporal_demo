@@ -89,7 +89,8 @@ begin
     ReleaseAuthorizationActivity,
     UpdateLedgersActivity,
     SendNotificationsActivity,
-    RefundPaymentActivity
+    RefundPaymentActivity,
+    WaitForManualApprovalActivity
   ]
   
   # Log each activity being registered
