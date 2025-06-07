@@ -6,15 +6,15 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
   def execute(payment_data)
     # Log workflow start with detailed data info
     Temporalio::Workflow.logger.info("Starting payment workflow with data type: #{payment_data.class}")
-    Temporalio::Workflow.logger.info("Payment data: #{payment_data.inspect}")
+    Temporalio::Workflow.logger.info("Payment data: #{payment_data.inspect}")    
     
-    # Defensive data normalization with logging
-    data = normalize_payment_data(payment_data)
-    Temporalio::Workflow.logger.info("Normalized data: #{data.inspect}")
+    # Normalize payment data right at the beginning to handle array/hash consistently
+    normalized_data = normalize_payment_data(payment_data)
+    Temporalio::Workflow.logger.info("Normalized payment data: #{normalized_data.inspect}")
     
     # Initialize workflow state with safe defaults
     @state = {
-      payment_data: data,
+      payment_data: payment_data,
       status: 'started'
     }
     
@@ -23,7 +23,7 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
     begin
       validation_result = Temporalio::Workflow.execute_activity(
         ValidateTransactionActivity,
-        data,
+        payment_data,
         start_to_close_timeout: 10
       )
       Temporalio::Workflow.logger.info("Validation result: #{validation_result.inspect}")
@@ -39,7 +39,7 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
       # Run fraud check via compliance API
       fraud_check_result = Temporalio::Workflow.execute_activity(
         RunFraudCheckActivity,
-        data,
+        payment_data,
         start_to_close_timeout: 10
       )
       Temporalio::Workflow.logger.info("Fraud check result: #{fraud_check_result.inspect}")
@@ -48,7 +48,7 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
       # Run AML check via compliance API
       aml_check_result = Temporalio::Workflow.execute_activity(
         RunAmlCheckActivity,
-        data,
+        payment_data,
         start_to_close_timeout: 10
       )
       Temporalio::Workflow.logger.info("AML check result: #{aml_check_result.inspect}")
@@ -61,10 +61,10 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
     # Step 3: Get exchange rate from FX service API
     Temporalio::Workflow.logger.info("Step 3: Getting exchange rate")
     begin
-      # Prepare params for FX API call
+      # Prepare params for FX API call using normalized data
       fx_params = {
-        from: data[:charge_currency] || data[:currency],
-        to: data[:settlement_currency] || data[:currency]
+        from: normalized_data[:charge_currency] || normalized_data[:currency],
+        to: normalized_data[:settlement_currency] || normalized_data[:currency]
       }
       fx_result = Temporalio::Workflow.execute_activity(
         GetExchangeRateActivity,
@@ -81,11 +81,11 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
     # Step 4: Capture the payment with extensive logging and error handling
     Temporalio::Workflow.logger.info("Step 4: Capturing payment")
     begin
-      # Ensure we have the right params for capture
+      # Ensure we have the right params for capture using normalized data
       capture_params = {
-        amount: data[:amount],
-        currency: data[:currency] || data[:charge_currency] || data[:settlement_currency],
-        authorization_id: data[:authorization_id] || 'default-auth-id'  # Fallback for demo
+        amount: normalized_data[:amount],
+        currency: normalized_data[:currency] || normalized_data[:charge_currency] || normalized_data[:settlement_currency],
+        authorization_id: normalized_data[:authorization_id] || 'default-auth-id'  # Fallback for demo
       }
       capture_result = Temporalio::Workflow.execute_activity(
         CapturePaymentActivity,

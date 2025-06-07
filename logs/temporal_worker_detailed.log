@@ -1,789 +1,572 @@
-[2025-06-02 16:28:07 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:28:07 -0400] INFO: Worker process ID: 8634
-[2025-06-02 16:28:07 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:28:07 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:28:07 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:28:07 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:28:07 -0400] INFO: Client namespace: default
-[2025-06-02 16:28:07 -0400] ERROR: Worker error: NoMethodError - undefined method 'connected?' for an instance of Temporalio::Client
-[2025-06-02 16:28:07 -0400] ERROR: Backtrace: worker.rb:61:in '<main>'
-[2025-06-02 16:30:20 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:30:20 -0400] INFO: Worker process ID: 8744
-[2025-06-02 16:30:20 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:30:20 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:30:20 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:30:20 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:30:20 -0400] INFO: Client namespace: default
-[2025-06-02 16:30:20 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:30:20 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:30:20 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:30:20 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:30:20 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:30:21 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:30:21 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:30:21 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:31:15 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:31:15 -0400] INFO: Worker has stopped
-[2025-06-02 16:31:15 -0400] INFO: Worker process completed
-[2025-06-02 16:31:37 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:31:37 -0400] INFO: Worker process ID: 8905
-[2025-06-02 16:31:37 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:31:37 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:31:37 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:31:37 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:31:37 -0400] INFO: Client namespace: default
-[2025-06-02 16:31:37 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:31:37 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:31:37 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:31:37 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:31:37 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:31:37 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:31:37 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:31:37 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:34:40 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:34:40 -0400] INFO: Worker process ID: 9037
-[2025-06-02 16:34:40 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:34:40 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:34:40 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:34:40 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:34:40 -0400] INFO: Client namespace: default
-[2025-06-02 16:34:40 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:34:40 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:34:40 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:34:40 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:34:40 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:34:40 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:34:40 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:34:40 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:36:02 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:36:02 -0400] INFO: Worker process ID: 9138
-[2025-06-02 16:36:02 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:36:02 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:36:02 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:36:02 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:36:02 -0400] INFO: Client namespace: default
-[2025-06-02 16:36:02 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:36:02 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:36:02 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:36:02 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:36:02 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:36:02 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:36:02 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:36:02 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:36:59 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:36:59 -0400] INFO: Worker has stopped
-[2025-06-02 16:36:59 -0400] INFO: Worker process completed
-[2025-06-02 16:36:59 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:36:59 -0400] INFO: Worker has stopped
-[2025-06-02 16:36:59 -0400] INFO: Worker process completed
-[2025-06-02 16:36:59 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:36:59 -0400] INFO: Worker has stopped
-[2025-06-02 16:36:59 -0400] INFO: Worker process completed
-[2025-06-02 16:37:15 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:37:15 -0400] INFO: Worker process ID: 9254
-[2025-06-02 16:37:15 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:37:15 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:37:15 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:37:15 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:37:15 -0400] INFO: Client namespace: default
-[2025-06-02 16:37:15 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:37:15 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:37:15 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:37:15 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:37:15 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:37:15 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:37:15 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:37:15 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:38:30 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:38:30 -0400] INFO: Worker has stopped
-[2025-06-02 16:38:30 -0400] INFO: Worker process completed
-[2025-06-02 16:38:37 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:38:37 -0400] INFO: Worker process ID: 9420
-[2025-06-02 16:38:37 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:38:37 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:38:37 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:38:37 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:38:37 -0400] INFO: Client namespace: default
-[2025-06-02 16:38:37 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:38:37 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:38:37 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:38:37 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:38:37 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:38:37 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:38:37 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:38:37 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:40:23 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:40:23 -0400] INFO: Worker has stopped
-[2025-06-02 16:40:23 -0400] INFO: Worker process completed
-[2025-06-02 16:40:29 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:40:29 -0400] INFO: Worker process ID: 9590
-[2025-06-02 16:40:29 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:40:29 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:40:29 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:40:29 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:40:29 -0400] INFO: Client namespace: default
-[2025-06-02 16:40:29 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:40:29 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:40:29 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:40:29 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:40:29 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:40:29 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:40:29 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:40:29 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:41:43 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:41:43 -0400] INFO: Worker has stopped
-[2025-06-02 16:41:43 -0400] INFO: Worker process completed
-[2025-06-02 16:41:50 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:41:50 -0400] INFO: Worker process ID: 9751
-[2025-06-02 16:41:50 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:41:50 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:41:50 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:41:50 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:41:50 -0400] INFO: Client namespace: default
-[2025-06-02 16:41:50 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:41:50 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:41:50 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:41:50 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:41:50 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:41:50 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:41:50 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:41:50 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:42:49 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:42:49 -0400] INFO: Worker has stopped
-[2025-06-02 16:42:49 -0400] INFO: Worker process completed
-[2025-06-02 16:42:58 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:42:58 -0400] INFO: Worker process ID: 9914
-[2025-06-02 16:42:58 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:42:58 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:42:58 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:42:58 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:42:58 -0400] INFO: Client namespace: default
-[2025-06-02 16:42:58 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:42:58 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:42:58 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:42:58 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:42:58 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:42:58 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:42:58 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:42:58 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:47:11 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:47:11 -0400] INFO: Worker has stopped
-[2025-06-02 16:47:11 -0400] INFO: Worker process completed
-[2025-06-02 16:47:17 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:47:17 -0400] INFO: Worker process ID: 10089
-[2025-06-02 16:47:17 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:47:17 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:47:17 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:47:17 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:47:17 -0400] INFO: Client namespace: default
-[2025-06-02 16:47:17 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:47:17 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:47:17 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:47:17 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:47:17 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:47:17 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:47:17 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:47:17 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:48:45 -0400] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
-[2025-06-02 16:48:45 -0400] INFO: Worker has stopped
-[2025-06-02 16:48:45 -0400] INFO: Worker process completed
-[2025-06-02 16:48:53 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:48:53 -0400] INFO: Worker process ID: 10266
-[2025-06-02 16:48:53 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:48:53 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:48:53 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:48:53 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:48:53 -0400] INFO: Client namespace: default
-[2025-06-02 16:48:53 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:48:53 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:48:53 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:48:53 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:48:53 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:48:53 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:48:53 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:48:53 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:50:37 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:50:37 -0400] INFO: Worker process ID: 10381
-[2025-06-02 16:50:37 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:50:37 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:50:37 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:50:37 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:50:37 -0400] INFO: Client namespace: default
-[2025-06-02 16:50:37 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:50:37 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:50:37 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:50:37 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:50:37 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:50:37 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:50:37 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:50:37 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:55:15 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:55:15 -0400] INFO: Worker process ID: 11015
-[2025-06-02 16:55:15 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:55:15 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:55:15 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:55:15 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:55:15 -0400] INFO: Client namespace: default
-[2025-06-02 16:55:15 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:55:15 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:55:15 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:55:15 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:55:15 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:55:15 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:55:15 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:55:15 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:56:49 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:56:49 -0400] INFO: Worker process ID: 11135
-[2025-06-02 16:56:49 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:56:49 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:56:49 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:56:49 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:56:49 -0400] INFO: Client namespace: default
-[2025-06-02 16:56:49 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:56:49 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:56:49 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:56:49 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:56:49 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:56:49 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:56:49 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:56:49 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 16:58:04 -0400] INFO: Starting Temporal worker...
-[2025-06-02 16:58:04 -0400] INFO: Worker process ID: 11230
-[2025-06-02 16:58:04 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 16:58:04 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 16:58:04 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 16:58:04 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 16:58:04 -0400] INFO: Client namespace: default
-[2025-06-02 16:58:04 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 16:58:04 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 16:58:04 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 16:58:04 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 16:58:04 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 16:58:04 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 16:58:04 -0400] INFO: Starting worker run loop...
-[2025-06-02 16:58:04 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:03:29 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:03:29 -0400] INFO: Worker process ID: 11694
-[2025-06-02 17:03:29 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:03:29 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:03:29 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:03:29 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:03:29 -0400] INFO: Client namespace: default
-[2025-06-02 17:03:29 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:03:29 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:03:29 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:03:29 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:03:29 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:03:29 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:03:29 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:03:29 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:05:13 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:05:13 -0400] INFO: Worker process ID: 11813
-[2025-06-02 17:05:13 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:05:13 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:05:13 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:05:13 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:05:13 -0400] INFO: Client namespace: default
-[2025-06-02 17:05:13 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:05:13 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:05:13 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:05:13 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:05:13 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:05:13 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:05:13 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:05:13 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:08:24 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:08:24 -0400] INFO: Worker process ID: 11954
-[2025-06-02 17:08:24 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:08:24 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:08:24 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:08:24 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:08:24 -0400] INFO: Client namespace: default
-[2025-06-02 17:08:24 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:08:24 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:08:24 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:08:24 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:08:24 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:08:24 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:08:24 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:08:24 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:34:11 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:34:11 -0400] INFO: Worker process ID: 12175
-[2025-06-02 17:34:11 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:34:11 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:34:11 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:34:11 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:34:11 -0400] INFO: Client namespace: default
-[2025-06-02 17:34:11 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:34:11 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:34:11 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:34:11 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:34:11 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:34:11 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:34:11 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:34:11 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:35:22 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:35:22 -0400] INFO: Worker process ID: 12239
-[2025-06-02 17:35:22 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:35:22 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:35:22 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:35:22 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:35:22 -0400] INFO: Client namespace: default
-[2025-06-02 17:35:22 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:35:22 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:35:22 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:35:22 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:35:22 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:35:22 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:35:22 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:35:22 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:37:16 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:37:16 -0400] INFO: Worker process ID: 12471
-[2025-06-02 17:37:16 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:37:16 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:37:16 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:37:16 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:37:16 -0400] INFO: Client namespace: default
-[2025-06-02 17:37:16 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:37:16 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:37:16 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:37:16 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:37:16 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:37:16 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:37:16 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:37:16 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:42:00 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:42:00 -0400] INFO: Worker process ID: 12637
-[2025-06-02 17:42:00 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:42:00 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:42:00 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:42:00 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:42:00 -0400] INFO: Client namespace: default
-[2025-06-02 17:42:00 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:42:00 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:42:00 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:42:00 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:42:00 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:42:00 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:42:00 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:42:00 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 17:56:15 -0400] INFO: Starting Temporal worker...
-[2025-06-02 17:56:15 -0400] INFO: Worker process ID: 12785
-[2025-06-02 17:56:15 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 17:56:15 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 17:56:15 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 17:56:15 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 17:56:15 -0400] INFO: Client namespace: default
-[2025-06-02 17:56:15 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 17:56:15 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 17:56:15 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 17:56:15 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 17:56:15 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 17:56:15 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 17:56:15 -0400] INFO: Starting worker run loop...
-[2025-06-02 17:56:15 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:02:58 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:02:58 -0400] INFO: Worker process ID: 12918
-[2025-06-02 18:02:58 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:02:58 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:02:58 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:02:58 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:02:58 -0400] INFO: Client namespace: default
-[2025-06-02 18:02:58 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:02:58 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:02:58 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:02:58 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:02:58 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:02:58 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:02:58 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:02:58 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:05:58 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:05:58 -0400] INFO: Worker process ID: 13051
-[2025-06-02 18:05:58 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:05:58 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:05:58 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:05:58 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:05:58 -0400] INFO: Client namespace: default
-[2025-06-02 18:05:58 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:05:58 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:05:58 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:05:58 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:05:58 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:05:58 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:05:58 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:05:58 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:09:59 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:09:59 -0400] INFO: Worker process ID: 13314
-[2025-06-02 18:09:59 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:09:59 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:09:59 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:09:59 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:09:59 -0400] INFO: Client namespace: default
-[2025-06-02 18:09:59 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:09:59 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:09:59 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:09:59 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:09:59 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:09:59 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:09:59 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:09:59 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:12:11 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:12:11 -0400] INFO: Worker process ID: 13463
-[2025-06-02 18:12:11 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:12:11 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:12:11 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:12:11 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:12:11 -0400] INFO: Client namespace: default
-[2025-06-02 18:12:11 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:12:11 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:12:11 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:12:11 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:12:11 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:12:11 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:12:11 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:12:11 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:23:19 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:23:19 -0400] INFO: Worker process ID: 13805
-[2025-06-02 18:23:19 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:23:19 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:23:19 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:23:19 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:23:19 -0400] INFO: Client namespace: default
-[2025-06-02 18:23:19 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:23:19 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:23:19 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:23:19 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:23:19 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:23:19 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:23:19 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:23:19 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:29:21 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:29:21 -0400] INFO: Worker process ID: 13946
-[2025-06-02 18:29:21 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:29:21 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:29:21 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:29:21 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:29:21 -0400] INFO: Client namespace: default
-[2025-06-02 18:29:21 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:29:21 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:29:21 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:29:21 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:29:21 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:29:21 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:29:21 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:29:21 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
-[2025-06-02 18:35:17 -0400] INFO: Starting Temporal worker...
-[2025-06-02 18:35:17 -0400] INFO: Worker process ID: 14252
-[2025-06-02 18:35:17 -0400] INFO: Ruby version: 3.4.2
-[2025-06-02 18:35:17 -0400] INFO: SDK version: 0.4.0
-[2025-06-02 18:35:17 -0400] INFO: Connecting to Temporal server at localhost:7233...
-[2025-06-02 18:35:17 -0400] INFO: Connected to Temporal server successfully!
-[2025-06-02 18:35:17 -0400] INFO: Client namespace: default
-[2025-06-02 18:35:17 -0400] INFO: Client successfully connected to namespace: default
-[2025-06-02 18:35:17 -0400] INFO: Starting payment worker on task queue 'payment-task-queue'
-[2025-06-02 18:35:17 -0400] INFO: Press Ctrl-C to stop the worker
-[2025-06-02 18:35:17 -0400] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunFraudCheckActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunAmlCheckActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: RunSanctionsCheckActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: GetExchangeRateActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: ValidateTransactionActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: AuthorizePaymentActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: CapturePaymentActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: ReleaseAuthorizationActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: UpdateLedgersActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: SendNotificationsActivity
-[2025-06-02 18:35:17 -0400] INFO: Registering activity: RefundPaymentActivity
-[2025-06-02 18:35:17 -0400] INFO: Worker created successfully with 11 activities
-[2025-06-02 18:35:17 -0400] INFO: Starting worker run loop...
-[2025-06-02 18:35:17 -0400] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+# Logfile created on 2025-06-07 17:51:57 +0000 by logger.rb/v1.7.0
+[2025-06-07 17:51:57 +0000] INFO: Starting Temporal worker...
+[2025-06-07 17:51:57 +0000] INFO: Worker process ID: 1
+[2025-06-07 17:51:57 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 17:51:57 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 17:51:57 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 17:51:57 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 17:51:57 +0000] INFO: Client namespace: default
+[2025-06-07 17:51:57 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 17:51:57 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 17:51:57 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 17:51:57 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 17:51:57 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 17:51:58 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 17:51:58 +0000] INFO: Starting worker run loop...
+[2025-06-07 17:51:58 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 17:55:49 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 17:55:49 +0000] INFO: Worker has stopped
+[2025-06-07 17:55:49 +0000] INFO: Worker process completed
+[2025-06-07 17:55:53 +0000] INFO: Starting Temporal worker...
+[2025-06-07 17:55:53 +0000] INFO: Worker process ID: 1
+[2025-06-07 17:55:53 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 17:55:53 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 17:55:53 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 17:55:53 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 17:55:53 +0000] INFO: Client namespace: default
+[2025-06-07 17:55:53 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 17:55:53 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 17:55:53 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 17:55:53 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 17:55:53 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 17:55:53 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 17:55:53 +0000] INFO: Starting worker run loop...
+[2025-06-07 17:55:53 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 18:00:29 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 18:00:29 +0000] INFO: Worker has stopped
+[2025-06-07 18:00:29 +0000] INFO: Worker process completed
+[2025-06-07 18:00:34 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:34 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:34 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:34 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:34 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:34 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:34 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:34 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:34 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:34 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:34 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:34 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:34 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:34 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:35 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:35 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:35 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:35 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:35 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:35 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:35 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:36 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:36 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:36 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:36 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:36 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:36 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:36 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:37 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:37 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:37 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:37 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:37 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:37 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:37 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:39 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:39 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:39 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:39 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:39 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:39 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:39 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:42 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:42 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:42 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:42 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:42 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:42 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:42 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:00:49 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:00:49 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:00:49 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:00:49 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:00:49 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:00:49 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:00:49 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:01:02 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:01:02 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:01:02 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:01:02 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:01:02 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:01:02 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:01:02 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:01:28 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:01:28 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:01:28 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:01:28 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:01:28 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:01:28 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:01:28 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:17:57 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:17:57 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:17:57 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:17:57 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:17:57 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:17:57 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:17:57 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:17:58 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:17:58 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:17:58 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:17:58 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:17:58 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:17:58 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:17:58 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:17:58 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:17:58 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:17:58 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:17:58 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:17:58 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:17:58 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:17:58 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:17:59 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:17:59 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:17:59 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:17:59 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:17:59 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:17:59 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:17:59 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:00 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:00 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:00 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:00 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:00 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:00 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:00 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:02 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:02 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:02 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:02 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:02 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:02 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:02 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:05 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:05 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:05 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:05 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:05 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:05 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:05 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:12 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:12 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:12 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:12 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:12 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:12 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:12 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:25 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:25 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:25 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:25 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:25 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:25 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:25 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:18:51 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:18:51 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:18:51 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:18:51 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:18:51 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:18:51 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:18:51 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:19:42 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:19:42 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:19:42 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:19:42 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:19:42 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:19:42 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:19:42 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:20:43 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:20:43 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:20:43 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:20:43 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:20:43 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:20:43 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:20:43 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:21:43 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:21:43 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:21:43 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:21:43 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:21:43 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:21:43 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:21:43 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:13 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:13 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:13 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:13 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:13 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:13 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:13 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:14 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:14 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:14 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:14 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:14 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:14 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:14 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:14 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:14 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:14 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:14 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:14 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:14 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:14 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:15 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:15 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:15 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:15 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:15 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:15 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:15 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:16 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:16 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:16 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:16 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:16 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:16 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:16 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:18 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:18 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:18 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:18 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:18 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:18 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:18 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:21 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:21 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:21 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:21 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:21 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:21 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:21 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:28 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:28 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:28 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:28 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:28 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:28 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:28 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:22:41 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:22:41 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:22:41 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:22:41 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:22:41 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:22:41 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:22:41 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:23:07 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:23:07 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:23:07 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:23:07 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:23:07 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:23:07 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Name or service not known" })))
+[2025-06-07 18:23:07 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:23:25 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:23:25 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:23:25 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:23:25 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:23:25 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:23:25 +0000] ERROR: Worker error: Temporalio::Internal::Bridge::Error - Failed client connect: Server connection error: tonic::transport::Error(Transport, ConnectError(ConnectError("tcp connect error", Os { code: 111, kind: ConnectionRefused, message: "Connection refused" })))
+[2025-06-07 18:23:25 +0000] ERROR: Backtrace: /usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/internal/bridge/client.rb:58:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:312:in `new_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:262:in `_core_client'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client/connection.rb:198:in `initialize'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `new'\n/usr/local/bundle/gems/temporalio-0.4.0-aarch64-linux/lib/temporalio/client.rb:104:in `connect'\nworker.rb:62:in `<main>'
+[2025-06-07 18:23:26 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:23:26 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:23:26 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:23:26 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:23:26 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:23:26 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 18:23:26 +0000] INFO: Client namespace: default
+[2025-06-07 18:23:26 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 18:23:26 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 18:23:26 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 18:23:26 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 18:23:26 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 18:23:26 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 18:23:26 +0000] INFO: Starting worker run loop...
+[2025-06-07 18:23:26 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 18:27:15 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 18:27:15 +0000] INFO: Worker has stopped
+[2025-06-07 18:27:15 +0000] INFO: Worker process completed
+[2025-06-07 18:32:31 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:32:31 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:32:31 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:32:31 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:32:31 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:32:31 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 18:32:31 +0000] INFO: Client namespace: default
+[2025-06-07 18:32:31 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 18:32:31 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 18:32:31 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 18:32:31 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 18:32:31 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 18:32:31 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 18:32:31 +0000] INFO: Starting worker run loop...
+[2025-06-07 18:32:31 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 18:51:55 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 18:51:55 +0000] INFO: Worker has stopped
+[2025-06-07 18:51:55 +0000] INFO: Worker process completed
+[2025-06-07 18:51:55 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:51:55 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:51:55 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:51:55 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:51:55 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:51:55 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 18:51:55 +0000] INFO: Client namespace: default
+[2025-06-07 18:51:55 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 18:51:55 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 18:51:55 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 18:51:55 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 18:51:55 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 18:51:55 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 18:51:55 +0000] INFO: Starting worker run loop...
+[2025-06-07 18:51:55 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 18:53:53 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 18:53:53 +0000] INFO: Worker has stopped
+[2025-06-07 18:53:53 +0000] INFO: Worker process completed
+[2025-06-07 18:53:54 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:53:54 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:53:54 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:53:54 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:53:54 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:53:54 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 18:53:54 +0000] INFO: Client namespace: default
+[2025-06-07 18:53:54 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 18:53:54 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 18:53:54 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 18:53:54 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 18:53:54 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 18:53:54 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 18:53:54 +0000] INFO: Starting worker run loop...
+[2025-06-07 18:53:54 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 18:57:42 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 18:57:42 +0000] INFO: Worker has stopped
+[2025-06-07 18:57:42 +0000] INFO: Worker process completed
+[2025-06-07 18:59:52 +0000] INFO: Starting Temporal worker...
+[2025-06-07 18:59:52 +0000] INFO: Worker process ID: 1
+[2025-06-07 18:59:52 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 18:59:52 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 18:59:52 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 18:59:52 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 18:59:52 +0000] INFO: Client namespace: default
+[2025-06-07 18:59:52 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 18:59:52 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 18:59:52 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 18:59:52 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 18:59:52 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 18:59:52 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 18:59:52 +0000] INFO: Starting worker run loop...
+[2025-06-07 18:59:52 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 19:01:19 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 19:01:19 +0000] INFO: Worker has stopped
+[2025-06-07 19:01:19 +0000] INFO: Worker process completed
+[2025-06-07 19:02:49 +0000] INFO: Starting Temporal worker...
+[2025-06-07 19:02:49 +0000] INFO: Worker process ID: 1
+[2025-06-07 19:02:49 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 19:02:49 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 19:02:49 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 19:02:49 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 19:02:49 +0000] INFO: Client namespace: default
+[2025-06-07 19:02:49 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 19:02:49 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 19:02:49 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 19:02:49 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 19:02:49 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 19:02:49 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 19:02:49 +0000] INFO: Starting worker run loop...
+[2025-06-07 19:02:49 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 19:04:38 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 19:04:38 +0000] INFO: Worker has stopped
+[2025-06-07 19:04:38 +0000] INFO: Worker process completed
+[2025-06-07 19:06:25 +0000] INFO: Starting Temporal worker...
+[2025-06-07 19:06:25 +0000] INFO: Worker process ID: 1
+[2025-06-07 19:06:25 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 19:06:25 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 19:06:25 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 19:06:25 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 19:06:25 +0000] INFO: Client namespace: default
+[2025-06-07 19:06:25 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 19:06:25 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 19:06:25 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 19:06:25 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 19:06:25 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 19:06:25 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 19:06:25 +0000] INFO: Starting worker run loop...
+[2025-06-07 19:06:25 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 19:07:28 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 19:07:28 +0000] INFO: Worker has stopped
+[2025-06-07 19:07:28 +0000] INFO: Worker process completed
+[2025-06-07 19:09:05 +0000] INFO: Starting Temporal worker...
+[2025-06-07 19:09:05 +0000] INFO: Worker process ID: 1
+[2025-06-07 19:09:05 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 19:09:05 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 19:09:05 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 19:09:05 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 19:09:05 +0000] INFO: Client namespace: default
+[2025-06-07 19:09:05 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 19:09:05 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 19:09:05 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 19:09:05 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 19:09:05 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 19:09:05 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 19:09:05 +0000] INFO: Starting worker run loop...
+[2025-06-07 19:09:05 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 19:14:37 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 19:14:37 +0000] INFO: Worker has stopped
+[2025-06-07 19:14:37 +0000] INFO: Worker process completed
+[2025-06-07 19:15:53 +0000] INFO: Starting Temporal worker...
+[2025-06-07 19:15:53 +0000] INFO: Worker process ID: 1
+[2025-06-07 19:15:53 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 19:15:53 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 19:15:53 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 19:15:53 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 19:15:53 +0000] INFO: Client namespace: default
+[2025-06-07 19:15:53 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 19:15:53 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 19:15:53 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 19:15:53 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 19:15:53 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 19:15:54 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 19:15:54 +0000] INFO: Starting worker run loop...
+[2025-06-07 19:15:54 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 19:17:12 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 19:17:12 +0000] INFO: Worker has stopped
+[2025-06-07 19:17:12 +0000] INFO: Worker process completed
+[2025-06-07 19:19:13 +0000] INFO: Starting Temporal worker...
+[2025-06-07 19:19:13 +0000] INFO: Worker process ID: 1
+[2025-06-07 19:19:13 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 19:19:13 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 19:19:13 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 19:19:13 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 19:19:13 +0000] INFO: Client namespace: default
+[2025-06-07 19:19:13 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 19:19:13 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 19:19:13 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 19:19:13 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 19:19:13 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 19:19:14 +0000] INFO: Worker created successfully with 11 activities
+[2025-06-07 19:19:14 +0000] INFO: Starting worker run loop...
+[2025-06-07 19:19:14 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'

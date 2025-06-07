@@ -11,46 +11,52 @@ echo -e "${BLUE}===== PAYMENT WORKFLOW FAILURE TEST =====${NC}"
 echo -e "${BLUE}Testing failure and compensation when Compliance API is down${NC}"
 echo ""
 
-# First, verify that the Compliance API is actually down
-echo -e "Checking if Compliance API is down..."
-response=$(curl -s -o /dev/null -w "%{http_code}" -m 2 http://localhost:3002/api/health || echo "000")
+# First, stop the compliance-api container to simulate a failure
+echo -e "Stopping Compliance API container to simulate a failure scenario..."
 
-if [ "$response" == "200" ]; then
-  echo -e "${RED}⚠️ Compliance API is still running!${NC}"
-  echo -e "To run the failure scenario, first stop the Compliance API:"
-  echo -e "${YELLOW}lsof -ti:3002 | xargs kill -9${NC}"
-  exit 1
+if docker ps | grep -q "compliance-api"; then
+  echo "Stopping compliance-api container..."
+  docker stop compliance-api
+  sleep 2
+  if docker ps | grep -q "compliance-api"; then
+    echo -e "${RED}⚠️ Failed to stop Compliance API container!${NC}"
+    exit 1
+  else
+    echo -e "${GREEN}✅ Confirmed: Compliance API container is stopped${NC}"
+  fi
 else
-  echo -e "${GREEN}✅ Confirmed: Compliance API is down as expected${NC}"
+  echo -e "${GREEN}✅ Confirmed: Compliance API container is already stopped${NC}"
 fi
 
 # Check if other services are running
-check_service() {
-  local service_name=$1
-  local url=$2
+check_container() {
+  local container_name=$1
   
-  echo -e "Checking ${service_name} health..."
-  response=$(curl -s -o /dev/null -w "%{http_code}" -m 2 $url || echo "000")
-  
-  if [ "$response" == "200" ]; then
-    echo -e "✅ ${GREEN}${service_name} is healthy!${NC}"
+  echo -e "Checking if ${container_name} container is running..."
+  if docker ps | grep -q "$container_name"; then
+    echo -e "✅ ${GREEN}${container_name} container is running!${NC}"
     return 0
   else
-    echo -e "❌ ${RED}${service_name} is not responding (HTTP $response)${NC}"
+    echo -e "❌ ${RED}${container_name} container is not running!${NC}"
     return 1
   fi
 }
 
 # Verify other services are running
-echo "Checking other required services..."
+echo "Checking other required containers..."
 
-check_service "FX Service" "http://localhost:3001/health" || { 
-  echo -e "${RED}FX Service is not running. Please start it with ./start_all.sh${NC}"; 
+check_container "fx-service" || { 
+  echo -e "${RED}FX Service container is not running. Start it with: docker compose up -d fx_service${NC}"; 
   exit 1; 
 }
 
-check_service "Payment API" "http://localhost:3000/health" || { 
-  echo -e "${RED}Payment API is not running. Please start it with ./start_all.sh${NC}"; 
+check_container "payment-api" || { 
+  echo -e "${RED}Payment API container is not running. Start it with: docker compose up -d payment_api${NC}"; 
+  exit 1; 
+}
+
+check_container "temporal-worker" || { 
+  echo -e "${RED}Temporal Worker container is not running. Start it with: docker compose up -d temporal_worker${NC}"; 
   exit 1; 
 }
 
@@ -127,5 +133,5 @@ echo ""
 echo -e "${BLUE}View workflow details in Temporal UI:${NC}"
 echo "http://localhost:8233/namespaces/default/workflows/$WORKFLOW_ID"
 echo ""
-echo -e "${YELLOW}To restart the Compliance API after this test:${NC}"
-echo "cd compliance_api && bundle exec ruby app.rb -p 3002 -o 0.0.0.0"
+echo -e "${YELLOW}To restart the Compliance API container after this test:${NC}"
+echo "docker compose up -d compliance_api"

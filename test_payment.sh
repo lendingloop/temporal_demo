@@ -12,40 +12,39 @@ echo -e "${BLUE}Testing successful payment processing flow${NC}"
 echo ""
 
 # Check if all services are running
-check_service() {
-  local service_name=$1
-  local url=$2
-  
-  echo -e "Checking ${service_name} health..."
-  response=$(curl -s -o /dev/null -w "%{http_code}" $url)
-  
-  if [ "$response" == "200" ]; then
-    echo -e "✅ ${GREEN}${service_name} is healthy!${NC}"
-    return 0
-  else
-    echo -e "❌ ${RED}${service_name} is not responding (HTTP $response)${NC}"
-    return 1
-  fi
-}
+# Note: We're now checking Docker container status directly instead of health endpoints
 
 # Check all required services
-echo "Checking all required services..."
-check_service "FX Service" "http://localhost:3001/health" || { 
-  echo -e "${RED}FX Service is not running. Please start all services with ./start_all.sh${NC}"; 
-  exit 1; 
-}
+echo "Checking if Docker containers are running..."
+if ! docker ps | grep -q "fx-service"; then
+  echo -e "${RED}FX Service is not running. Please start all services with docker compose up -d${NC}"
+  exit 1
+else
+  echo -e "✅ ${GREEN}FX Service container is running${NC}"
+fi
 
-check_service "Compliance API" "http://localhost:3002/api/health" || { 
-  echo -e "${RED}Compliance API is not running. Please start all services with ./start_all.sh${NC}"; 
-  exit 1; 
-}
+if ! docker ps | grep -q "compliance-api"; then
+  echo -e "${RED}Compliance API is not running. Please start all services with docker compose up -d${NC}"
+  exit 1
+else
+  echo -e "✅ ${GREEN}Compliance API container is running${NC}"
+fi
 
-check_service "Payment API" "http://localhost:3000/health" || { 
-  echo -e "${RED}Payment API is not running. Please start all services with ./start_all.sh${NC}"; 
-  exit 1; 
-}
+if ! docker ps | grep -q "payment-api"; then
+  echo -e "${RED}Payment API is not running. Please start all services with docker compose up -d${NC}"
+  exit 1
+else
+  echo -e "✅ ${GREEN}Payment API container is running${NC}"
+fi
 
-echo -e "${GREEN}All services are running.${NC}"
+if ! docker ps | grep -q "temporal-worker"; then
+  echo -e "${RED}Temporal Worker is not running. Please start all services with docker compose up -d${NC}"
+  exit 1
+else
+  echo -e "✅ ${GREEN}Temporal Worker container is running${NC}"
+fi
+
+echo -e "${GREEN}All required Docker containers are running.${NC}"
 echo ""
 
 # Generate a unique reference for this test
@@ -86,28 +85,44 @@ echo ""
 
 # Poll for payment status
 echo -e "${BLUE}Monitoring payment status...${NC}"
-echo "This might take up to 15 seconds to complete"
+echo "This might take up to 15-30 seconds to complete in the Docker environment"
 
-for i in {1..5}; do
+for i in {1..10}; do
+  echo "Checking payment status (attempt $i)..."
   STATUS_RESPONSE=$(curl -s http://localhost:3000/api/payments/$WORKFLOW_ID)
-  STATUS=$(echo $STATUS_RESPONSE | grep -o '"status":"[^"]*"' | cut -d'"' -f4)
+  echo "Raw API response: '$STATUS_RESPONSE'"
   
-  echo "Status check $i: $STATUS"
+  # Try to extract JSON structure with jq if available
+  if command -v jq &> /dev/null; then
+    echo "Parsed response:"
+    echo "$STATUS_RESPONSE" | jq .
+    STATUS=$(echo "$STATUS_RESPONSE" | jq -r '.status // "unknown"')
+  else
+    # Fallback to grep if jq is not available
+    STATUS=$(echo "$STATUS_RESPONSE" | grep -o '"status":"[^"]*"' | cut -d'"' -f4)
+  fi
+  
+  echo "Payment status: $STATUS"
   
   if [ "$STATUS" == "COMPLETED" ]; then
     echo -e "${GREEN}✅ Payment completed successfully!${NC}"
     break
   elif [ "$STATUS" == "FAILED" ] || [ "$STATUS" == "REJECTED" ]; then
     echo -e "${RED}❌ Payment failed or was rejected${NC}"
-    echo $STATUS_RESPONSE
+    echo "Full response: $STATUS_RESPONSE"
     break
+  elif [ -z "$STATUS" ]; then
+    echo -e "${YELLOW}Unable to parse status from response. Raw response:${NC}"
+    echo "$STATUS_RESPONSE"
+    echo "Waiting 3 seconds before next attempt..."
+    sleep 3
   else
-    echo "Payment still processing... waiting 3 seconds"
+    echo "Payment status: $STATUS - waiting 3 seconds for next check..."
     sleep 3
   fi
   
   # Last check
-  if [ $i -eq 5 ] && [ "$STATUS" != "COMPLETED" ]; then
+  if [ $i -eq 10 ] && [ "$STATUS" != "COMPLETED" ]; then
     echo -e "${YELLOW}Payment is still processing. Check the Temporal UI for more details.${NC}"
   fi
 done
@@ -115,3 +130,7 @@ done
 echo ""
 echo -e "${BLUE}View workflow details in Temporal UI:${NC}"
 echo "http://localhost:8233/namespaces/default/workflows/$WORKFLOW_ID"
+echo ""
+echo -e "${YELLOW}To check Docker container logs:${NC}"
+echo "docker logs payment-api"
+echo "docker logs temporal-worker"

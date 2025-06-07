@@ -2,6 +2,7 @@ require 'temporalio/activity'
 require 'securerandom'
 require 'json'
 require 'logger'
+require 'time'  # Explicitly require time to ensure iso8601 method is available
 
 # Include ActivityLogging module if it exists, otherwise define it
 module ActivityLogging
@@ -9,7 +10,7 @@ module ActivityLogging
     @logger ||= Logger.new(STDOUT).tap do |l|
       l.level = Logger::INFO
       l.formatter = proc do |severity, datetime, progname, msg|
-        "[#{datetime}] #{severity}: [#{self.class.name}] #{msg}\n"
+        "[#{datetime}] #{severity}: [ACTIVITY] #{msg}\n"
       end
     end
   end
@@ -18,18 +19,26 @@ end unless defined?(ActivityLogging)
 class ValidateTransactionActivity < Temporalio::Activity::Definition
   include ActivityLogging
   def execute(payment_data)
-    logger.info "Validating transaction: #{payment_data[:amount]} #{payment_data[:charge_currency]}"
+    # Handle both array and hash inputs (API might send payment_data as first element in an array)
+    data = if payment_data.is_a?(Array)
+      logger.info "Converting payment_data from array to hash"
+      payment_data.first
+    else
+      payment_data
+    end
+    
+    logger.info "Validating transaction: #{data[:amount]} #{data[:charge_currency]}"
     
     # Simple validation rules
     errors = []
-    errors << "Amount must be positive" if payment_data[:amount].to_f <= 0
-    errors << "Currency must be specified" if payment_data[:charge_currency].to_s.empty?
-    errors << "Settlement currency must be specified" if payment_data[:settlement_currency].to_s.empty?
-    errors << "Customer information incomplete" if payment_data[:customer].nil? || payment_data[:customer].empty?
-    errors << "Merchant information incomplete" if payment_data[:merchant].nil? || payment_data[:merchant].empty?
+    errors << "Amount must be positive" if data[:amount].to_f <= 0
+    errors << "Currency must be specified" if data[:charge_currency].to_s.empty?
+    errors << "Settlement currency must be specified" if data[:settlement_currency].to_s.empty?
+    errors << "Customer information incomplete" if data[:customer].nil? || data[:customer].empty?
+    errors << "Merchant information incomplete" if data[:merchant].nil? || data[:merchant].empty?
     
     # For demo purposes, reject very large amounts
-    if payment_data[:amount].to_f > 50000
+    if data[:amount].to_f > 50000
       errors << "Amount exceeds maximum allowed (50,000)"
     end
 
@@ -42,7 +51,7 @@ class ValidateTransactionActivity < Temporalio::Activity::Definition
     
     return {
       approved: true,
-      timestamp: Time.now.utc.iso8601
+      timestamp: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use strftime instead of iso8601
     }
   end
 end
@@ -68,8 +77,8 @@ class AuthorizePaymentActivity < Temporalio::Activity::Definition
     
     return {
       authorization_id: auth_id,
-      authorized_at: Time.now.utc.iso8601,
-      expires_at: Time.now.utc + (60 * 60 * 24), # 24-hour auth
+      authorized_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ"), # Use strftime instead of iso8601
+      expires_at: (Time.now.utc + (60 * 60 * 24)), # 24-hour auth
       amount: params[:amount],
       currency: params[:currency]
     }
@@ -97,7 +106,7 @@ class CapturePaymentActivity < Temporalio::Activity::Definition
     
     return {
       transaction_id: transaction_id,
-      captured_at: Time.now.utc.iso8601,
+      captured_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ"), # Use strftime instead of iso8601
       amount: params[:amount],
       currency: params[:currency],
       authorization_id: params[:authorization_id]
@@ -121,7 +130,7 @@ class ReleaseAuthorizationActivity < Temporalio::Activity::Definition
     return {
       success: true,
       authorization_id: params[:authorization_id],
-      released_at: Time.now.utc.iso8601
+      released_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use strftime instead of iso8601
     }
   end
 end
@@ -162,7 +171,7 @@ class UpdateLedgersActivity < Temporalio::Activity::Definition
           currency: params[:settlement_currency]
         }
       ],
-      recorded_at: Time.now.utc.iso8601
+      recorded_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use strftime instead of iso8601
     }
   end
 end
@@ -209,7 +218,7 @@ class SendNotificationsActivity < Temporalio::Activity::Definition
     return {
       success: true,
       notifications: notifications,
-      sent_at: Time.now.utc.iso8601
+      sent_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use strftime instead of iso8601
     }
   end
 end
@@ -236,7 +245,7 @@ class RefundPaymentActivity < Temporalio::Activity::Definition
     return {
       refund_id: refund_id,
       transaction_id: params[:transaction_id],
-      refunded_at: Time.now.utc.iso8601,
+      refunded_at: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ"), # Use strftime instead of iso8601
       amount: params[:amount],
       currency: params[:currency]
     }

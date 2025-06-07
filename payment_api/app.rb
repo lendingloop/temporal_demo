@@ -20,8 +20,14 @@ class PaymentAPI < Sinatra::Base
       return @@temporal_client
     end
     
-    logger.debug("Connecting to Temporal server at localhost:7233")
-    @@temporal_client = Temporalio::Client.connect('localhost:7233', 'default')
+    # Get Temporal server host/port from environment variables or use default values
+    temporal_host = ENV['TEMPORAL_HOST'] || 'localhost'
+    temporal_port = ENV['TEMPORAL_PORT'] || '7233'
+    temporal_address = "#{temporal_host}:#{temporal_port}"
+    temporal_namespace = ENV['TEMPORAL_NAMESPACE'] || 'default'
+    
+    logger.debug("Connecting to Temporal server at #{temporal_address}")
+    @@temporal_client = Temporalio::Client.connect(temporal_address, temporal_namespace)
     logger.debug("Successfully connected to Temporal server")
     @@temporal_client
   end

@@ -1,0 +1,110 @@
+services:
+  # Temporal Stack
+  postgresql:
+    container_name: temporal-postgresql
+    environment:
+      POSTGRES_PASSWORD: temporal
+      POSTGRES_USER: temporal
+    image: postgres:13
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
+  temporal:
+    container_name: temporal
+    depends_on:
+      - postgresql
+    environment:
+      - DB=postgres12
+      - DB_PORT=5432
+      - POSTGRES_USER=temporal
+      - POSTGRES_PWD=temporal
+      - POSTGRES_SEEDS=postgresql
+    image: temporalio/auto-setup:latest
+    ports:
+      - 7233:7233
+
+
+  temporal-ui:
+    container_name: temporal-ui
+    depends_on:
+      - temporal
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_PERMIT_WRITE_API=true
+    image: temporalio/ui:latest
+    ports:
+      - 8233:8080
+
+  # Ruby Services
+  fx_service:
+    build:
+      context: ./fx_service
+      dockerfile: Dockerfile
+    container_name: fx-service
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./fx_service:/usr/src/app
+    command: ruby app/app.rb
+    depends_on:
+      - temporal
+
+  compliance_api:
+    build:
+      context: ./compliance_api
+      dockerfile: Dockerfile
+    container_name: compliance-api
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./compliance_api:/usr/src/app
+    command: ruby app/api.rb
+    depends_on:
+      - temporal
+
+  payment_api:
+    build:
+      context: ./payment_api
+      dockerfile: Dockerfile
+    container_name: payment-api
+    ports:
+      - "3000:3000"
+    environment:
+      - TEMPORAL_HOST=temporal
+      - TEMPORAL_PORT=7233
+      - TASK_QUEUE=payment-task-queue
+      - FX_SERVICE_URL=http://fx_service:3001
+      - COMPLIANCE_API_URL=http://compliance_api:3002
+    volumes:
+      - ./payment_api:/usr/src/app
+    command: bundle exec puma -p 3000
+    depends_on:
+      - temporal
+      - fx_service
+      - compliance_api
+
+  temporal_worker:
+    build:
+      context: ./temporal_worker
+      dockerfile: Dockerfile
+    container_name: temporal-worker
+    environment:
+      - TEMPORAL_HOST=temporal
+      - TEMPORAL_PORT=7233
+      - TASK_QUEUE=payment-task-queue
+      - FX_SERVICE_URL=http://fx_service:3001
+      - COMPLIANCE_API_URL=http://compliance_api:3002
+    volumes:
+      - ./temporal_worker:/usr/src/app
+      - ./logs:/usr/src/app/logs
+    command: bash -c "cd /usr/src/app && mkdir -p logs && sed -i 's|\.\./logs|./logs|g' worker.rb && ruby worker.rb"
+    depends_on:
+      - temporal
+      - fx_service
+      - compliance_api
+    restart: unless-stopped
+
+volumes:
+  postgresql_data:

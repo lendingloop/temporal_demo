@@ -21,7 +21,7 @@ $stdout_logger.level = Logger::DEBUG
 $stdout_logger.formatter = log_formatter
 
 # File logger
-log_file_path = File.join(File.dirname(__FILE__), '..', 'logs', 'temporal_worker_detailed.log')
+log_file_path = File.join(File.dirname(__FILE__), 'logs', 'temporal_worker_detailed.log')
 $file_logger = Logger.new(log_file_path, 0, 10485760) # Use 10MB max file size
 $file_logger.level = Logger::DEBUG
 $file_logger.formatter = log_formatter
@@ -54,8 +54,12 @@ log(:info, "SDK version: #{Temporalio::VERSION}")
 
 begin
   # Connect to the Temporal server
-  log(:info, "Connecting to Temporal server at localhost:7233...")
-  client = Temporalio::Client.connect("localhost:7233", "default")
+  temporal_host = ENV['TEMPORAL_HOST'] || 'localhost'
+  temporal_port = ENV['TEMPORAL_PORT'] || '7233'
+  temporal_address = "#{temporal_host}:#{temporal_port}"
+  temporal_namespace = ENV['TEMPORAL_NAMESPACE'] || 'default'
+  log(:info, "Connecting to Temporal server at #{temporal_address}...")
+  client = Temporalio::Client.connect(temporal_address, temporal_namespace)
   log(:info, "Connected to Temporal server successfully!")
   log(:info, "Client namespace: #{client.namespace}")
   # Note: connected? method doesn't exist in Temporalio::Client in v0.4.0

@@ -4,3 +4,5 @@ gem 'sinatra'
 gem 'sinatra-contrib' 
 gem 'puma'
 gem 'json'
+
+gem "rackup", "~> 2.2"
