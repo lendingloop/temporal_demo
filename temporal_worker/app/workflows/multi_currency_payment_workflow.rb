@@ -3,10 +3,20 @@ require 'temporalio/workflow'
 # Minimal workflow for payment processing demo
 class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
   # Define signal handler for manual approval
+  # This signature accepts an optional parameter to maintain compatibility
+  # with both the Temporal UI (no params) and CLI (with params)
   workflow_signal
-  def approve_payment(approved)
-    Temporalio::Workflow.logger.info("Received approval signal with value: #{approved}")
-    @payment_approved = approved
+  def approve_payment(approved=nil)
+    Temporalio::Workflow.logger.info("Received approval signal")
+    @payment_approved = true
+  end
+
+  # Define signal handler for manual rejection
+  # This signature accepts an optional parameter to maintain compatibility
+  workflow_signal
+  def decline_payment(value=nil)
+    Temporalio::Workflow.logger.info("Received rejection signal")
+    @payment_approved = false
   end
 
   def execute(payment_data)
@@ -88,17 +98,19 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
           # In production, you might set a much longer timeout (days) or none at all
           # For demo - we'll use a shorter timeout
           
-          Temporalio::Workflow.logger.info("Waiting for manual approval signal")
+          Temporalio::Workflow.logger.info("Waiting for manual approval signal (no timeout)")
+          Temporalio::Workflow.logger.info("**IMPORTANT** To approve: Send 'approve_payment' signal using Temporal UI")
+          Temporalio::Workflow.logger.info("**IMPORTANT** To decline: Send 'decline_payment' signal using Temporal UI")
           
-          # Using a simple sleep for demo purposes
-          # In production, you might want to use a different pattern with longer timeouts
-          # or implement a custom polling mechanism
-          Temporalio::Workflow.sleep(10) # 10 seconds for demo
+          # Wait indefinitely for a signal (either approve_payment or decline_payment)
+          # The workflow will be blocked here until a signal is received
+          Temporalio::Workflow.wait_condition { @payment_approved != nil }
           
-          # If we timed out without receiving a signal, auto-approve for demo
-          if @payment_approved.nil?
-            Temporalio::Workflow.logger.info("No manual approval received within timeout, auto-approving for demo")
-            @payment_approved = true
+          # After receiving signal, log the result
+          if @payment_approved
+            Temporalio::Workflow.logger.info("Payment was APPROVED via signal")
+          else
+            Temporalio::Workflow.logger.info("Payment was DECLINED via signal")
           end
           
           # Record the approval decision

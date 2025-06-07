@@ -1440,3 +1440,177 @@
 [2025-06-07 21:20:51 +0000] INFO: Worker created successfully with 12 activities
 [2025-06-07 21:20:51 +0000] INFO: Starting worker run loop...
 [2025-06-07 21:20:51 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:26:36 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:26:36 +0000] INFO: Worker has stopped
+[2025-06-07 21:26:36 +0000] INFO: Worker process completed
+[2025-06-07 21:26:36 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:26:36 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:26:36 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:26:36 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:26:36 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:26:36 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:26:36 +0000] INFO: Client namespace: default
+[2025-06-07 21:26:36 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:26:36 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:26:36 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:26:36 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:26:36 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:26:37 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:26:37 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:26:37 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:31:38 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:31:38 +0000] INFO: Worker has stopped
+[2025-06-07 21:31:38 +0000] INFO: Worker process completed
+[2025-06-07 21:31:38 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:31:38 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:31:38 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:31:38 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:31:38 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:31:38 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:31:38 +0000] INFO: Client namespace: default
+[2025-06-07 21:31:38 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:31:38 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:31:38 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:31:38 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:31:38 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:31:38 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:31:38 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:31:38 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:33:38 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:33:38 +0000] INFO: Worker has stopped
+[2025-06-07 21:33:38 +0000] INFO: Worker process completed
+[2025-06-07 21:33:38 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:33:38 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:33:38 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:33:38 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:33:38 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:33:38 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:33:38 +0000] INFO: Client namespace: default
+[2025-06-07 21:33:38 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:33:38 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:33:38 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:33:38 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:33:38 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:33:38 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:33:38 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:33:38 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:34:34 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:34:34 +0000] INFO: Worker has stopped
+[2025-06-07 21:34:34 +0000] INFO: Worker process completed
+[2025-06-07 21:34:35 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:34:35 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:34:35 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:34:35 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:34:35 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:34:35 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:34:35 +0000] INFO: Client namespace: default
+[2025-06-07 21:34:35 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:34:35 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:34:35 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:34:35 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:34:35 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:34:35 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:34:35 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:34:35 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:39:28 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:39:28 +0000] INFO: Worker has stopped
+[2025-06-07 21:39:28 +0000] INFO: Worker process completed
+[2025-06-07 21:39:28 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:39:28 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:39:28 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:39:28 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:39:28 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:39:28 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:39:28 +0000] INFO: Client namespace: default
+[2025-06-07 21:39:28 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:39:28 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:39:28 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:39:28 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:39:28 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:39:28 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:39:28 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:39:28 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-07 21:42:24 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-07 21:42:24 +0000] INFO: Worker has stopped
+[2025-06-07 21:42:24 +0000] INFO: Worker process completed
+[2025-06-07 21:42:24 +0000] INFO: Starting Temporal worker...
+[2025-06-07 21:42:24 +0000] INFO: Worker process ID: 1
+[2025-06-07 21:42:24 +0000] INFO: Ruby version: 3.3.8
+[2025-06-07 21:42:24 +0000] INFO: SDK version: 0.4.0
+[2025-06-07 21:42:24 +0000] INFO: Connecting to Temporal server at temporal:7233...
+[2025-06-07 21:42:24 +0000] INFO: Connected to Temporal server successfully!
+[2025-06-07 21:42:24 +0000] INFO: Client namespace: default
+[2025-06-07 21:42:24 +0000] INFO: Client successfully connected to namespace: default
+[2025-06-07 21:42:24 +0000] INFO: Starting payment worker on task queue 'payment-task-queue'
+[2025-06-07 21:42:24 +0000] INFO: Press Ctrl-C to stop the worker
+[2025-06-07 21:42:24 +0000] INFO: Registering workflow: MultiCurrencyPaymentWorkflow
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: RunFraudCheckActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: RunAmlCheckActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: RunSanctionsCheckActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: GetExchangeRateActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: ValidateTransactionActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: AuthorizePaymentActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: CapturePaymentActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: ReleaseAuthorizationActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: UpdateLedgersActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: SendNotificationsActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: RefundPaymentActivity
+[2025-06-07 21:42:24 +0000] INFO: Registering activity: WaitForManualApprovalActivity
+[2025-06-07 21:42:24 +0000] INFO: Worker created successfully with 12 activities
+[2025-06-07 21:42:24 +0000] INFO: Starting worker run loop...
+[2025-06-07 21:42:24 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
