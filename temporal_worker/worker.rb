@@ -1,10 +1,20 @@
 # frozen_string_literal: true
 
+# DEMO: TEMPORAL WORKER ENTRY POINT
+# This is the main entry point for the Temporal worker process.
+# It demonstrates the key components of a Temporal worker application:
+#
+# 1. Client connection to Temporal server
+# 2. Worker registration with activities and workflows
+# 3. Task queue configuration
+# 4. Worker lifecycle management
+
 require 'temporalio/client'
 require 'temporalio/worker'
 require 'logger'
 
-# Require all the activity and workflow definitions
+# DEMO: IMPORT ALL WORKFLOW AND ACTIVITY DEFINITIONS
+# Any workflow or activity that needs to be executed must be registered with the worker
 require_relative 'app/activities/compliance_activities'
 require_relative 'app/activities/fx_activities'
 require_relative 'app/activities/payment_activities'
@@ -53,11 +63,19 @@ log(:info, "Ruby version: #{RUBY_VERSION}")
 log(:info, "SDK version: #{Temporalio::VERSION}")
 
 begin
-  # Connect to the Temporal server
+  # DEMO: TEMPORAL SERVER CONNECTION
+  # This establishes a connection to the Temporal server
+  # In our Docker setup, this connects to the 'temporal' service
   temporal_host = ENV['TEMPORAL_HOST'] || 'localhost'
   temporal_port = ENV['TEMPORAL_PORT'] || '7233'
   temporal_address = "#{temporal_host}:#{temporal_port}"
   temporal_namespace = ENV['TEMPORAL_NAMESPACE'] || 'default'
+  
+  # DEMO NOTE: CONNECTION TROUBLESHOOTING
+  # If you're having issues with the workflow showing in the UI, check:
+  # 1. Is the Temporal service running? (docker-compose ps)
+  # 2. Is this namespace ('default') correct?
+  # 3. Are the worker and UI connecting to the same Temporal server?
   log(:info, "Connecting to Temporal server at #{temporal_address}...")
   client = Temporalio::Client.connect(temporal_address, temporal_namespace)
   log(:info, "Connected to Temporal server successfully!")
@@ -65,24 +83,30 @@ begin
   # Note: connected? method doesn't exist in Temporalio::Client in v0.4.0
   log(:info, "Client successfully connected to namespace: #{client.namespace}")
 
-  # Start the worker
+  # DEMO: WORKFLOW & ACTIVITY REGISTRATION
+  # This section shows how to register workflows and activities with the Temporal worker
   log(:info, "Starting payment worker on task queue 'payment-task-queue'")
   log(:info, "Press Ctrl-C to stop the worker")
 
-  # Log all activities and workflows that will be registered
+  # DEMO: WORKFLOW REGISTRATION
+  # The workflow must be registered with the worker to be processed
+  # This is MultiCurrencyPaymentWorkflow from app/workflows/multi_currency_payment_workflow.rb
   log(:info, "Registering workflow: MultiCurrencyPaymentWorkflow")
   
-  # Define all activities with detailed logging
+  # DEMO: ACTIVITY REGISTRATION
+  # All activities must be registered with the worker to be executed
+  # These correspond to the activity classes in the app/activities/ directory
   activities = [
-    # Compliance activities
+    # Compliance activities - handle fraud and compliance checks
     RunFraudCheckActivity,
     RunAmlCheckActivity,
     RunSanctionsCheckActivity,
     
-    # FX activities
+    # FX activities - currency exchange operations
+    # These contain our critical Host header fix for inter-container communication
     GetExchangeRateActivity,
     
-    # Payment activities
+    # Payment activities - handle the actual payment processing
     ValidateTransactionActivity,
     AuthorizePaymentActivity,
     CapturePaymentActivity,
@@ -98,32 +122,45 @@ begin
     log(:info, "Registering activity: #{activity}")
   end
 
-  # Create a worker registering the activities and workflows from the app directory
+  # DEMO: TASK QUEUE CONFIGURATION - CRITICAL FOR UI VISIBILITY!
+  # The task queue name MUST match exactly between worker and client
+  # If workflows aren't visible in the UI, check this configuration!
+  # In our case, 'payment-task-queue' is used by both worker and payment API
   worker = Temporalio::Worker.new(
     client: client,
-    task_queue: 'payment-task-queue',
+    task_queue: 'payment-task-queue',  # THIS MUST MATCH THE TASK QUEUE IN PAYMENT API!
     workflows: [MultiCurrencyPaymentWorkflow],
     activities: activities
   )
   
   log(:info, "Worker created successfully with #{activities.size} activities")
   
-  # Run the worker
+  # DEMO: WORKER POLLING LOOP
+  # This starts the worker polling for tasks on the specified task queue
+  # The worker will continuously poll for workflow and activity tasks
   log(:info, "Starting worker run loop...")
   worker.run do |running_worker|
     # This block will be called once the worker is running
     log(:info, "Worker is now running and polling for tasks on 'payment-task-queue'")
     
-    # Check for shutdown signal periodically
+    # DEMO: WORKER LIFECYCLE
+    # The worker will continue running until it receives a shutdown signal
+    # This allows for graceful shutdown when Docker stops the container
     while !shutdown
       sleep 1
     end
     
+    # DEMO: GRACEFUL SHUTDOWN
+    # When shutdown is triggered, the worker will finish its current tasks
+    # This prevents workflow tasks from being abandoned midway
     log(:info, "Graceful shutdown initiated, worker will stop after current tasks complete")
   end
   
   log(:info, "Worker has stopped")
 rescue => e
+  # DEMO: ERROR HANDLING
+  # If the worker encounters an error, we log it for troubleshooting
+  # In a production system, you might send this to a monitoring service
   log(:error, "Worker error: #{e.class} - #{e.message}")
   log(:error, "Backtrace: #{e.backtrace.join('\n')}")
   raise

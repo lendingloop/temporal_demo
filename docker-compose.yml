@@ -98,7 +98,6 @@ services:
       - COMPLIANCE_API_URL=http://compliance_api:3002
     volumes:
       - ./temporal_worker:/usr/src/app
-      - ./logs:/usr/src/app/logs
     command: bash -c "cd /usr/src/app && mkdir -p logs && sed -i 's|\.\./logs|./logs|g' worker.rb && ruby worker.rb"
     depends_on:
       - temporal
