@@ -55,7 +55,7 @@ Each step is implemented as a Temporal activity with:
 
 ## Getting Started
 
-See [DEMO.md](DEMO.md) for detailed setup instructions and demo scenarios.
+See [demo](demo.markdown) for detailed setup instructions and demo scenarios.
 
 ## Technology Stack
 
