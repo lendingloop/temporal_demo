@@ -1,4 +1,6 @@
 require 'temporalio/workflow'
+# Make sure we have access to the ValidationError class
+require_relative '../activities/payment_activities'
 
 # DEMO: START HERE - TEMPORAL WORKFLOW OVERVIEW
 # This file defines our payment workflow using Temporal's workflow framework.
@@ -65,21 +67,15 @@ class MultiCurrencyPaymentWorkflow < Temporalio::Workflow::Definition
       
       # Step 1: Validate the transaction with extensive logging and error handling
       Temporalio::Workflow.logger.info("Step 1: Validating transaction")
-      begin
-        # DEMO: This is calling ValidateTransactionActivity defined in payment_activities.rb
-        # Note the timeout - if activity takes longer than 10 seconds, it will fail
-        validation_result = Temporalio::Workflow.execute_activity(
-          ValidateTransactionActivity,
-          payment_data,
-          start_to_close_timeout: 10
-        )
-        Temporalio::Workflow.logger.info("Validation result: #{validation_result.inspect}")
-        @state[:validation] = validation_result
-      rescue => e
-        # All exceptions are logged and saved in workflow history for debugging
-        Temporalio::Workflow.logger.error("Validation error: #{e.class} - #{e.message}\n#{e.backtrace.join("\n")}")
-        raise
-      end
+    
+        # Use retry policy to limit attempts and properly handle non_retryable ApplicationError
+      validation_result = Temporalio::Workflow.execute_activity(
+        ValidateTransactionActivity,
+        payment_data,
+        start_to_close_timeout: 10,
+      )
+      Temporalio::Workflow.logger.info("Validation result: #{validation_result.inspect}")
+      @state[:validation] = validation_result     
       
       # DEMO POINT 4: EXTERNAL SERVICE CALLS
       # These activities call the compliance_api service via HTTP

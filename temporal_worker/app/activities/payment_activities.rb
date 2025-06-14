@@ -2,7 +2,11 @@ require 'temporalio/activity'
 require 'securerandom'
 require 'json'
 require 'logger'
+require 'temporalio/error'
 require 'time'  # Explicitly require time to ensure iso8601 method is available
+
+# We'll use a plain Ruby error for simplicity
+class ValidationError < StandardError; end
 
 # Include ActivityLogging module if it exists, otherwise define it
 module ActivityLogging
@@ -27,6 +31,10 @@ class ValidateTransactionActivity < Temporalio::Activity::Definition
       payment_data
     end
     
+    # Convert string keys to symbols for consistent access
+    # This handles both cases where keys might be strings (from JSON) or symbols
+    data = data.transform_keys(&:to_sym) if data.is_a?(Hash)
+    
     logger.info "Validating transaction: #{data[:amount]} #{data[:charge_currency]}"
     
     # Simple validation rules
@@ -42,13 +50,14 @@ class ValidateTransactionActivity < Temporalio::Activity::Definition
       errors << "Amount exceeds maximum allowed (50,000)"
     end
 
+    # If there are any validation errors, raise ApplicationError to fail the activity
     if errors.any?
-      return {
-        approved: false,
-        reason: errors.join(", ")
-      }
+      error_message = errors.join(", ")
+      logger.error "Validation failed: #{error_message}"      
+      raise Temporalio::Error::ApplicationError.new("Payment validation failed: #{error_message}", non_retryable: true)
     end
-    
+  
+    # If validation passes, return success
     return {
       approved: true,
       timestamp: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.%LZ") # Use strftime instead of iso8601
