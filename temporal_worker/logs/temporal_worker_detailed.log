@@ -25,3 +25,6 @@
 [2025-06-15 01:07:11 +0000] INFO: Worker created successfully with 12 activities
 [2025-06-15 01:07:11 +0000] INFO: Starting worker run loop...
 [2025-06-15 01:07:11 +0000] INFO: Worker is now running and polling for tasks on 'payment-task-queue'
+[2025-06-15 01:13:20 +0000] INFO: Graceful shutdown initiated, worker will stop after current tasks complete
+[2025-06-15 01:13:20 +0000] INFO: Worker has stopped
+[2025-06-15 01:13:20 +0000] INFO: Worker process completed
