@@ -71,11 +71,6 @@ begin
   temporal_address = "#{temporal_host}:#{temporal_port}"
   temporal_namespace = ENV['TEMPORAL_NAMESPACE'] || 'default'
   
-  # DEMO NOTE: CONNECTION TROUBLESHOOTING
-  # If you're having issues with the workflow showing in the UI, check:
-  # 1. Is the Temporal service running? (docker-compose ps)
-  # 2. Is this namespace ('default') correct?
-  # 3. Are the worker and UI connecting to the same Temporal server?
   log(:info, "Connecting to Temporal server at #{temporal_address}...")
   client = Temporalio::Client.connect(temporal_address, temporal_namespace)
   log(:info, "Connected to Temporal server successfully!")
